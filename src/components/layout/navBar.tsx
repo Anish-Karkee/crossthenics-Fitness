@@ -15,7 +15,7 @@ export function Navbar() {
     { name: "Home", href: "/" },
     { name: "All Product", href: "/allproducts" },
     { name: "Backpacks", href: "/backpacks" },
-    { name: "Latest Product", href: "/latestproducts" },
+    { name: "Latest Products", href: "/latestproducts" },
   ];
 
   return (
