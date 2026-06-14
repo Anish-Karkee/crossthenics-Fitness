@@ -1,0 +1,63 @@
+import backpk from "../../../../public/p-image/backpack.webp";
+import bkbp2 from "../../../../public/p-image/bkpk2.webp";
+import bkpk3 from "../../../../public/p-image/bkpk3.webp";
+import bkpk4 from "../../../../public/p-image/bkpk4.webp";
+import bkpk5 from "../../../../public/p-image/bkpk5.webp";
+import bkpk6 from "../../../../public/p-image/bkpk6.webp";
+import bkpk7 from "../../../../public/p-image/bkpk7.webp";
+
+
+const bagData = [
+    {
+        id: 1,
+        name: "Leopard Print Gym Backpack W/Cup Holders",
+        price: 7500,
+        description: "Material: Oxford 900D",
+        image: bkbp2,
+    },
+    {
+        id: 2,
+        name: "45L Large Gym Backpack W/Cup Holders Black",
+        price: 5500,
+        description: "Material: Oxford 900D",
+        image: backpk,
+    },
+    {
+        id: 3,
+        name: "Combat 45L",
+        price: 8500,
+        description: "Material: Oxford 900D",
+        image: bkpk3,
+    },
+    {
+        id: 4,
+        name: "Black Red",
+        price: 9000,
+        description: "Material: Oxford 900D",
+        image: bkpk4,
+    },
+    {
+        id: 5,
+        name: "Black white 45L",
+        price: 9000,
+        description: "Material: Oxford 900D",
+        image: bkpk5,
+    },
+    {
+        id: 6,
+        name: " Blue 45L",
+        price: 7500,
+        description: "Material: Oxford 900D",
+        image: bkpk6,
+    },
+    {
+        id: 7,
+        name: "Athelete Backpack Red 45L",
+        price: 9000,
+        description: "Material: Oxford 900D",
+        image: bkpk7,
+    },
+    // Add more backpack products as needed
+];
+
+export default bagData;

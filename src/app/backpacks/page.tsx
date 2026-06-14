@@ -1,15 +1,14 @@
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { Button } from "../../components/ui/button";
-import { productData } from "./products/ProductData";
+import bagData from "./packs/BagData";
 
-
-const AllProducts = () => {
+const Backpack = () => {
     return (
         <section className="w-full py-36 px-4 md:px-6 flex   bg-white">
             <div className="max-w-6xl mx-auto  text-black">
                 <div className="w-full flex grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {productData.map((product) => (
+                    {bagData.map((product) => (
                         <Card key={product.id} className="p-6 rounded-lg  ">
                             <div className="mt-4 p-6 rounded-lg ">
                                 <Image
@@ -38,4 +37,4 @@ const AllProducts = () => {
     );
 }
 
-export default AllProducts;
+export default Backpack;
