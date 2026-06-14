@@ -5,16 +5,17 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 import Logo from "../../../public/logo/ct-logo01.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "All Product", href: "#" },
-    { name: "Backpacks", href: "#" },
-    { name: "Latest Product", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "All Product", href: "/allproducts" },
+    { name: "Backpacks", href: "/backpacks" },
+    { name: "Latest Product", href: "/latestproducts" },
   ];
 
   return (
@@ -39,12 +40,12 @@ export function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 text-white">
+          <nav className="hidden md:flex items-center gap-8 text-black">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="transition-colors duration-300 hover:text-black"
+                className="transition-colors duration-300 hover:text-red-500"
               >
                 {link.name}
               </a>
@@ -52,14 +53,14 @@ export function Navbar() {
           </nav>
 
           {/* Desktop Contact Button */}
-          <Button className="hidden md:flex cursor-pointer transition-all duration-300 hover:bg-white hover:text-black">
+          <Button className="hidden md:flex cursor-pointer transition-all duration-300 hover:bg-red-200 hover:text-black">
             Contact Us
           </Button>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white md:hidden"
+            className="text-black md:hidden"
             aria-label="Toggle Menu"
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -76,19 +77,19 @@ export function Navbar() {
               transition={{ duration: 0.3 }}
               className="overflow-hidden md:hidden"
             >
-              <div className="flex flex-col gap-4 px-6 pb-6 text-white">
+              <div className="flex flex-col gap-4 px-6 pb-6 text-black">
                 {navLinks.map((link) => (
                   <a
                     key={link.name}
                     href={link.href}
-                    className="border-b border-white/10 pb-2 transition-colors duration-300 hover:text-black"
+                    className="border-b border-white/10 pb-2 transition-colors duration-300 hover:text-red-500"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
                   </a>
                 ))}
 
-                <Button className="mt-2 w-full transition-all duration-300 hover:bg-white hover:text-black">
+                <Button className="mt-2 w-full transition-all duration-300 hover:bg-red-200 hover:text-black">
                   Contact Us
                 </Button>
               </div>
