@@ -31,7 +31,7 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between px-4 md:px-6">
           {/* Logo */}
           <div>
-            <Link href="/">
+            <Link href="/" onClick={() => setActiveLink("Home")} >
             <Image
               src={Logo}
               alt="Startup Agency Logo"
