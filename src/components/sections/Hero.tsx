@@ -29,7 +29,7 @@ export default function Hero() {
               service to support every step of your fitness journey.
               Beyond providing exceptional products, 
               we take pride in offering outstanding customer service and
-              expert guidance to ensure a seamless shopping experience. 
+              a seamless shopping experience. 
              
             </p>
           </div>
