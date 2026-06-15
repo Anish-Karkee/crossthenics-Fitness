@@ -68,8 +68,8 @@ export default function Footer() {
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.twitter.com/crossthenicsfitness" target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                                    Twitter
+                                <a href="https://wa.me/9779804165664" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                                    whatsapp
                                 </a>
                             </li>
                         </ul>

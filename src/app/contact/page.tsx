@@ -1,9 +1,9 @@
 
-import Button from '../../components/ui/button'
+import { Button } from '../../components/ui/button'
 
 const ContactPage = () => {
   return (
-    <div className="bg-white overflow-x-hidden">
+    <div className="bg-white overflow-x-hidden py-10">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
       <section className="px-6 md:px-12 lg:px-20 py-12 md:py-16">
@@ -19,7 +19,7 @@ const ContactPage = () => {
 
             {/* Location */}
             <div className="flex items-start gap-4 mb-7">
-              <div className="w-11 h-11 shrink-0 bg-blue-500 flex items-center justify-center rounded-full text-white text-lg">
+              <div className="w-11 h-11 shrink-0 bg-red-500 flex items-center justify-center rounded-full text-white text-lg">
                 <i className="fas fa-map-marker-alt" />
               </div>
               <div>
@@ -30,7 +30,7 @@ const ContactPage = () => {
 
             {/* Phone */}
             <div className="flex items-start gap-4 mb-7">
-              <div className="w-11 h-11 shrink-0 bg-blue-500 flex items-center justify-center rounded-full text-white text-lg">
+              <div className="w-11 h-11 shrink-0 bg-red-500 flex items-center justify-center rounded-full text-white text-lg">
                 <i className="fas fa-phone-alt" />
               </div>
               <div>
@@ -44,7 +44,7 @@ const ContactPage = () => {
 
             {/* Email */}
             <div className="flex items-start gap-4 mb-7">
-              <div className="w-11 h-11 shrink-0 bg-blue-500 flex items-center justify-center rounded-full text-white text-lg">
+              <div className="w-11 h-11 shrink-0 bg-red-500 flex items-center justify-center rounded-full text-white text-lg">
                 <i className="fas fa-envelope" />
               </div>
               <div>
@@ -60,14 +60,11 @@ const ContactPage = () => {
               <a href="https://www.facebook.com/people/Crossthenics/61555726779804/?mibextid=wwXIfr&rdid=58cQcAPjpXPARQjs&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F15oxRiQ9NE%2F%3Fmibextid%3DwwXIfr" className="w-10 h-10 bg-gray-700 flex items-center justify-center rounded-full text-white hover:bg-blue-600 hover:-translate-y-1 transition duration-300">
                 <i className="fab fa-facebook-f" />
               </a>
-              <a href="https://www.instagram.com/crossthenicfitness" className="w-10 h-10 bg-gray-700 flex items-center justify-center rounded-full text-white hover:bg-pink-600 hover:-translate-y-1 transition duration-300">
+              <a href="https://www.instagram.com/crossthenicsfitness" className="w-10 h-10 bg-gray-700 flex items-center justify-center rounded-full text-white hover:bg-red-400 hover:-translate-y-1 transition duration-300">
                 <i className="fab fa-instagram" />
               </a>
-              <a href="#" className="w-10 h-10 bg-gray-700 flex items-center justify-center rounded-full text-white hover:bg-blue-400 hover:-translate-y-1 transition duration-300">
-                <i className="fab fa-twitter" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-gray-700 flex items-center justify-center rounded-full text-white hover:bg-blue-700 hover:-translate-y-1 transition duration-300">
-                <i className="fab fa-linkedin-in" />
+              <a href="https://wa.me/9779804165664" className="w-10 h-10 bg-gray-700 flex items-center justify-center rounded-full text-white hover:bg-green-500 hover:-translate-y-1 transition duration-300">
+                <i className="fab fa-whatsapp" />
               </a>
             </div>
           </div>
@@ -128,10 +125,9 @@ const ContactPage = () => {
                 />
               </div>
 
-              <Button
-                text="Send Message"
-                color="text-white bg-black hover:text-white hover:bg-blue-600 hover:scale-105 hover:shadow-lg transition duration-300"
-              />
+              <Button className="hidden md:flex cursor-pointer transition-all duration-300 hover:bg-red-200 hover:text-black">
+            Send Message
+          </Button>
             </form>
           </div>
 
