@@ -10,17 +10,17 @@ import bkpk7 from "../../../../public/p-image/bkpk7.webp";
 const bagData = [
     {
         id: 1,
-        name: "Leopard Print Gym Backpack W/Cup Holders",
+        name: "45L Large Gym Backpack W/Cup Holders Blue",
         price: 7500,
         description: "Material: Oxford 900D",
-        image: bkbp2,
+        image: backpk,
     },
     {
         id: 2,
-        name: "45L Large Gym Backpack W/Cup Holders Black",
+        name: " Leopard Print Gym Backpack W/Cup Holders",
         price: 5500,
         description: "Material: Oxford 900D",
-        image: backpk,
+        image: bkbp2,
     },
     {
         id: 3,

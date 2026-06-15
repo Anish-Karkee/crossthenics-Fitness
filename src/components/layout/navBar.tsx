@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "../ui/button";
+import Link from 'next/link'
 import Logo from "../../../public/logo/ct-logo01.png";
 
 export function Navbar() {
@@ -52,9 +53,11 @@ export function Navbar() {
           </nav>
 
           {/* Desktop Contact Button */}
+          <Link href="/contact">
           <Button className="hidden md:flex cursor-pointer transition-all duration-300 hover:bg-red-200 hover:text-black">
             Contact Us
           </Button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
