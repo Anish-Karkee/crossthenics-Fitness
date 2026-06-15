@@ -10,6 +10,7 @@ import Logo from "../../../public/logo/ct-logo01.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("Home");
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -44,19 +45,22 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8 text-black">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
-                className="transition-colors duration-300 hover:text-red-500"
+                className={`transition-colors duration-300 hover:text-red-500 ${activeLink === link.name ? 'underline decoration-red-500 decoration-2 underline-offset-[5px]' : ''}`}
+                onClick={() => setActiveLink(link.name)}
               >
                 {link.name}
-              </a>
+
+              </Link>
+
             ))}
           </nav>
 
           {/* Desktop Contact Button */}
           <Link href="/contact">
-          <Button className="hidden md:flex cursor-pointer transition-all duration-300 hover:bg-red-200 hover:text-black">
+          <Button className="hidden md:flex cursor-pointer transition-all duration-300 hover:bg-red-300 hover:text-black">
             Contact Us
           </Button>
           </Link>
