@@ -11,6 +11,7 @@ export default function Footer() {
                 <div className="grid gap-8 md:grid-cols-4">
                     {/* Brand */}
                     <div className="md:col-span-2 md:pl-18" >
+                        
                         <Image
                             src={logo}
                             alt="Crossthenics Fitness Logo"
