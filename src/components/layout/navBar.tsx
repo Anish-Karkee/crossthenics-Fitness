@@ -87,19 +87,20 @@ export function Navbar() {
             >
               <div className="flex flex-col gap-4 px-6 pb-6 text-black">
                 {navLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.name}
                     href={link.href}
                     className="border-b border-white/10 pb-2 transition-colors duration-300 hover:text-red-500"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
-
-                <Button className="mt-2 w-full transition-all duration-300 hover:bg-red-200 hover:text-black">
-                  Contact Us
-                </Button>
+                <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  <Button className="mt-2 w-full transition-all duration-300 hover:bg-red-200 hover:text-black">
+                   Contact Us
+                   </Button>
+</Link>
               </div>
             </motion.div>
           )}

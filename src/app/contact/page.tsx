@@ -125,7 +125,7 @@ const ContactPage = () => {
                 />
               </div>
 
-              <Button className="hidden md:flex cursor-pointer transition-all duration-300 hover:bg-red-300 hover:text-black">
+              <Button className="cursor-pointer transition-all duration-300 hover:bg-red-300 hover:text-black">
             Send Message
           </Button>
             </form>
