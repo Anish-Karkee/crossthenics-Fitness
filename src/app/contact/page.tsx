@@ -3,7 +3,7 @@ import { Button } from '../../components/ui/button'
 
 const ContactPage = () => {
   return (
-    <div className="bg-white overflow-x-hidden py-10">
+    <div className="bg-white overflow-x-hidden py-10 px-5">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
       <section className="px-6 md:px-12 lg:px-20 py-12 md:py-16">
@@ -14,7 +14,7 @@ const ContactPage = () => {
           <div className="p-6 sm:p-8 bg-gray-50">
             <h2 className="text-2xl font-bold text-black mb-8 relative pb-4">
               Contact Information
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-black" />
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-red-400" />
             </h2>
 
             {/* Location */}
@@ -73,7 +73,7 @@ const ContactPage = () => {
           <div className="p-6 sm:p-8">
             <h2 className="text-2xl font-bold text-black mb-8 relative pb-4">
               Send Us a Message
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-blue-500" />
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-red-400" />
             </h2>
 
             <form className="space-y-5">
@@ -125,7 +125,7 @@ const ContactPage = () => {
                 />
               </div>
 
-              <Button className="hidden md:flex cursor-pointer transition-all duration-300 hover:bg-red-200 hover:text-black">
+              <Button className="hidden md:flex cursor-pointer transition-all duration-300 hover:bg-red-300 hover:text-black">
             Send Message
           </Button>
             </form>

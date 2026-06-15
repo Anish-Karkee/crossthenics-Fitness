@@ -27,6 +27,10 @@ export default function Hero() {
               enthusiasts achieve their goals. Our mission is to
               deliver high-quality products and exceptional customer
               service to support every step of your fitness journey.
+              Beyond providing exceptional products, 
+              we take pride in offering outstanding customer service and
+              expert guidance to ensure a seamless shopping experience. 
+             
             </p>
           </div>
           <Link href="/allproducts">

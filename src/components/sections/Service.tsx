@@ -2,20 +2,16 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import serviceImage from "../../../public/web images/bag.jpg";
 import sidebag from "../../../public/web images/side.jpg";
-import chalk from "../../../public/web images/chalk.jpg";
-import belt from "../../../public/web images/belt1.jpg";
+
 
 export default function Service() {
     return (
-        <section className="w-full py-36 px-4 md:px-6 bg-white">
+        <section className="w-full py-2 px-4 md:px-6 bg-white">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-12 text-black">
                 <div className="w-full md:w-1/2">
-
-
-                    <h2 className="text-4xl md:text-5xl font-bold text-black mt-3 mb-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-black mt-3 mb-6">
                         Our Services
                     </h2>
-
                     <div className="mt-4 p-6 rounded-lg bg-black/10">
                         <p className="text-gray-800 text-lg leading-relaxed">
                             At our fitness store,

@@ -30,6 +30,7 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between px-4 md:px-6">
           {/* Logo */}
           <div>
+            <Link href="/">
             <Image
               src={Logo}
               alt="Startup Agency Logo"
@@ -37,6 +38,7 @@ export function Navbar() {
               height={200}
               className="h-8 w-auto cursor-pointer object-contain sm:h-10 md:h-12"
             />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
