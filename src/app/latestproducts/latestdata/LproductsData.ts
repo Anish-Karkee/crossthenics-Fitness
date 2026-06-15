@@ -3,7 +3,8 @@ import belt2 from "../../../../public/p-image/belt2.webp";
 import belt3 from "../../../../public/p-image/belt3.webp";
 import belt4 from "../../../../public/p-image/belt4.webp";
 import belt5 from "../../../../public/p-image/belt5.webp";
-
+import Rchain from "../../../../public/p-image/Rchain.webp";
+import CRB from "../../../../public/p-image/carabiner.webp";
 
 
 const latestProducts = [
@@ -42,7 +43,20 @@ const latestProducts = [
         description: "Crossthenics Powerlifting Belt for Heavy Lifting",
         image: belt5,
     },
-    
+    {
+        id: 6,
+        name: "Nylon Rope chain",
+        price: 800,
+        description: "Crossthenics Rchain Resistance Bands for Effective Workouts",
+        image: Rchain,
+    },
+    {
+        id: 7,
+        name: "Carabiner Clip",
+        price: 700,
+        description: "Crossthenics Carabiner Clip for Secure Attachment",
+        image: CRB,
+    },
     // Add more latest products as needed
 ];
 
