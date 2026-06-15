@@ -48,7 +48,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`transition-colors duration-300 hover:text-red-500 ${activeLink === link.name ? 'underline decoration-red-500 decoration-2 underline-offset-[5px]' : ''}`}
+                className={`transition-colors duration-300  hover:text-red-500 ${activeLink === link.name ? 'underline decoration-red-500 decoration-2 underline-offset-[5px]' : ''}`}
                 onClick={() => setActiveLink(link.name)}
               >
                 {link.name}
