@@ -1,8 +1,6 @@
-import { Button } from "../ui/button";
 import Image from "next/image";
 import serviceImage from "../../../public/web images/bag.jpg";
 import sidebag from "../../../public/web images/side.jpg";
-
 
 export default function Service() {
     return (
@@ -26,7 +24,7 @@ export default function Service() {
                     </div>
                 </div>
                 <div className="w-full lg:w-3/5 py-20">
-                    <div className="grid grid-cols-2 gap-2 sm: gap-2">
+                    <div className="grid grid-cols-2 gap-2 sm:gap-2">
                         <Image
                             src={serviceImage}
                             alt="Service Image"
