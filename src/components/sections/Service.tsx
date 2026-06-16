@@ -18,7 +18,8 @@ export default function Service() {
                             From home gym setups and strength-training gear to nutritional products and everyday fitness essentials, our carefully selected collection meets the needs of beginners, athletes, and fitness enthusiasts alike.
                             Committed to quality, affordability, and customer satisfaction.
                             We Provide the best to our customer and help them in their acheivment toward fitness.
-                            Lift weight till you drop it......
+                            Push your limits, embrace the challenge, and transform your potential into results.
+                           
 
                         </p>
                     </div>
