@@ -60,7 +60,7 @@ export function Navbar() {
 
           {/* Desktop Contact Button */}
           <Link href="/contact">
-          <Button className="hidden md:flex cursor-pointer transition-all duration-300 hover:bg-red-300 hover:text-black">
+          <Button className="hidden md:flex cursor-pointer transition-all duration-300 hover:bg-orange-500 hover:text-black hover:scale-115">
             Contact Us
           </Button>
           </Link>

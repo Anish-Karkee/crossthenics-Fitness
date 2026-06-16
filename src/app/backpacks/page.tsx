@@ -25,7 +25,7 @@ const Backpack = () => {
                                 <p className="text-xl font-semibold text-black mb-4">
                                     Rs {product.price}
                                 </p>
-                                <Button className="bg-black text-white hover:bg-red-300 hover:text-black">
+                                <Button className="bg-black text-white hover:bg-orange-500 hover:text-black hover:scale-115">
                                     Add to Cart
                                 </Button>
                             </div>

@@ -125,7 +125,7 @@ const ContactPage = () => {
                 />
               </div>
 
-              <Button className="cursor-pointer transition-all duration-300 hover:bg-red-300 hover:text-black">
+              <Button className="cursor-pointer transition-all duration-300 hover:bg-orange-500 hover:text-black hover:scale-115">
             Send Message
           </Button>
             </form>
