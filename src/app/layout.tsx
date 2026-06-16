@@ -1,26 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navBar";
 import Footer from "@/components/layout/Footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+import { Fonts } from "@/components/layout/Fonts";
 export const metadata: Metadata = {
   title: "Crossthenics Fitness",
   description: "A clean glassmorphism  homepage.",
   icons: {
     icon: "./favicon.png"
   }
-
 };
 
 export default function RootLayout({
@@ -29,14 +17,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
         <Navbar />
-        {children}
-        <Footer />
+          {children}
+          <Footer />
+        
       </body>
     </html>
   );
