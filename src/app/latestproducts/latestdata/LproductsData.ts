@@ -24,7 +24,7 @@ const latestProducts = [
     },
     {
         id: 3,
-        name: "Premium Leather Lifting Belt",
+        name: "Premium Lifting Belt",
         price: 5000,
         description: "Crossthenics Premium Leather Lifting Belt for Ultimate Durability",
         image: belt3,
@@ -47,7 +47,7 @@ const latestProducts = [
         id: 6,
         name: "Nylon Rope chain",
         price: 800,
-        description: "Crossthenics Rchain Resistance Bands for Effective Workouts",
+        description: "Crossthenics Resistance Bands for Effective Workouts",
         image: Rchain,
     },
     {
