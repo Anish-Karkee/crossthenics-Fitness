@@ -5,8 +5,8 @@ import bagData from "./packs/BagData";
 
 const Backpack = () => {
     return (
-        <section className="w-full py-36 px-4 md:px-6 flex   bg-gray-300">
-            <div className="max-w-6xl mx-auto  text-black">
+        <section className="w-full py-36 px-4 md:px-6 flex bg-gray-300">
+            <div className="max-w-6xl mx-auto text-black">
                 <div className="w-full flex grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                     {bagData.map((product) => (
                         <Card key={product.id} className="p-3 md:p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg shadow-black/10  transition-all  duration-300  hover:bg-white/15  hover:scale-[1.02]   hover:shadow-xl ">
