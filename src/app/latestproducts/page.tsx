@@ -19,7 +19,7 @@ const LatestProducts = () => {
                                 <h2 className="text-xl md:text-xl  text-black mt-3 mb-6">
                                     {product.name}
                                 </h2>
-                                <p className="text-gray 800 text-lg leading-relaxed mb-4">
+                                <p className="hidden md:block text-gray 800 text-lg leading-relaxed mb-4">
                                     {product.description}
                                 </p>
                                 <p className="text-xl font-semibold text-black mb-4">
