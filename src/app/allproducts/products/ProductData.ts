@@ -20,7 +20,7 @@ export const productData = [
     },
     {
         id: 2,
-        name: "45L Large Gym Backpack W/Cup Holders Lake Blue",
+        name: "45L Backpack Lake Blue",
         price: 7500,
         description: "Material: Oxford 900D",
         image: backpk,

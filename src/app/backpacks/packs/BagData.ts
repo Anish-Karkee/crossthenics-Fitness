@@ -10,14 +10,14 @@ import bkpk7 from "../../../../public/p-image/bkpk7.webp";
 const bagData = [
     {
         id: 1,
-        name: "45L Large Gym Backpack W/Cup Holders Blue",
+        name: "45L Backpack Lake Blue",
         price: 7500,
         description: "Material: Oxford 900D",
         image: backpk,
     },
     {
         id: 2,
-        name: " Leopard Print Gym Backpack W/Cup Holders",
+        name: " Leopard Print Gym Backpack ",
         price: 5500,
         description: "Material: Oxford 900D",
         image: bkbp2,
@@ -38,7 +38,7 @@ const bagData = [
     },
     {
         id: 5,
-        name: "Black white 45L",
+        name: "Black white ",
         price: 9000,
         description: "Material: Oxford 900D",
         image: bkpk5,
@@ -52,7 +52,7 @@ const bagData = [
     },
     {
         id: 7,
-        name: "Athelete Backpack Red 45L",
+        name: "45L Backpack Red",
         price: 9000,
         description: "Material: Oxford 900D",
         image: bkpk7,
