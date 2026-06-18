@@ -14,8 +14,11 @@ export default function Service() {
                         <p className="text-gray-800 text-lg leading-relaxed">
                             At our fitness store,
                             we are dedicated to helping individuals across Nepal achieve healthier and more active lifestyles.
-                            We offer a wide range of premium fitness equipment, high-quality supplements, and essential fitness accessories designed to support your wellness journey.
-                            From home gym setups and strength-training gear to nutritional products and everyday fitness essentials, our carefully selected collection meets the needs of beginners, athletes, and fitness enthusiasts alike.
+                            We offer a wide range of premium fitness equipment, high-quality supplements, and essential fitness
+                            accessories designed to support your wellness journey.
+                            From home gym setups and strength-training gear to nutritional products and everyday fitness essentials,
+                            our carefully selected collection meets the needs of beginners,
+                            athletes, and fitness enthusiasts alike.
                             Committed to quality, affordability, and customer satisfaction.
                             We Provide the best to our customer and help them in their acheivment toward fitness.
                             Push your limits, embrace the challenge, and transform your potential into results.
