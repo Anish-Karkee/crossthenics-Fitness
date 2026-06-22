@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import {  useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -8,10 +8,16 @@ import { Button } from "../ui/button";
 import { Search } from "lucide-react";
 import Link from 'next/link'
 import Logo from "../../../public/logo/ct-logo01.png";
+import { useSearch } from "@/lib/searchContext";
+
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("Home");
+  // const filteredProducts = productData.filter((product) =>
+  //   product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //   product.description.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -19,6 +25,8 @@ export function Navbar() {
     { name: "Backpacks", href: "/backpacks" },
     { name: "Latest Products", href: "/latestproducts" },
   ];
+const {search, setSearch} = useSearch()
+
 
   return (
     <div className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
@@ -67,6 +75,8 @@ export function Navbar() {
             <input
               type="text"
               placeholder="Search..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               className="bg-transparent outline-none w-40 text-sm"
             />
           </div>
@@ -109,6 +119,14 @@ export function Navbar() {
                     {link.name}
                   </Link>
                 ))}
+                <Link href="/search" onClick={() => setIsOpen(false)}>
+                <Button
+                  variant="outline"
+                  className="w-full flex items-center justify-center gap-2">
+                  <Search size={18} />
+                  Search
+                </Button>
+              </Link>
                 <Link href="/contact" onClick={() => setIsOpen(false)}>
                   <Button className="mt-2 w-full transition-all duration-300 hover:bg-red-200 hover:text-black">
                    Contact Us
@@ -122,3 +140,4 @@ export function Navbar() {
     </div>
   );
 }
+
