@@ -119,19 +119,13 @@ const {search, setSearch} = useSearch()
                     {link.name}
                   </Link>
                 ))}
-                <Link href="/search" onClick={() => setIsOpen(false)}>
-                <Button
-                  variant="outline"
-                  className="w-full flex items-center justify-center gap-2">
-                  <Search size={18} />
-                  Search
-                </Button>
-              </Link>
+             
+            
                 <Link href="/contact" onClick={() => setIsOpen(false)}>
                   <Button className="mt-2 w-full transition-all duration-300 hover:bg-red-200 hover:text-black">
                    Contact Us
                    </Button>
-</Link>
+                </Link>
               </div>
             </motion.div>
           )}
