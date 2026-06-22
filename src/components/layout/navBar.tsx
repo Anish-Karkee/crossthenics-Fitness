@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "../ui/button";
+import { Search } from "lucide-react";
 import Link from 'next/link'
 import Logo from "../../../public/logo/ct-logo01.png";
 
@@ -59,11 +60,23 @@ export function Navbar() {
           </nav>
 
           {/* Desktop Contact Button */}
+         <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center bg-white/10 rounded-full px-3 py-2">
+            <Search size={18} className="mr-2" />
+
+            <input
+              type="text"
+              placeholder="Search..."
+              className="bg-transparent outline-none w-40 text-sm"
+            />
+          </div>
+
           <Link href="/contact">
-          <Button className="hidden md:flex cursor-pointer transition-all duration-300 hover:bg-orange-500 hover:text-black hover:scale-115">
-            Contact Us
-          </Button>
+            <Button className="cursor-pointer transition-all duration-300 hover:bg-orange-500 hover:text-black hover:scale-115">
+              Contact Us
+            </Button>
           </Link>
+        </div>
 
           {/* Mobile Menu Button */}
           <button
