@@ -9,7 +9,7 @@ export default function Hero() {
       
        
       
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-12 text-black">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-12 text-black">
         {/* Content Section */}
         <div className="w-full md:w-1/2">
           <span className="text-black uppercase tracking-wide">

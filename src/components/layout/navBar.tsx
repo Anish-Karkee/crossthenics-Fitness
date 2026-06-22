@@ -25,7 +25,7 @@ export function Navbar() {
         initial={{ y: -24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.35 }}
-        className="w-full max-w-6xl rounded-3xl border border-white/10 bg-white/10 backdrop-blur-2xl shadow-[0_20px_60px_rgba(15,23,42,0.35)]"
+        className="w-full max-w-7xl rounded-3xl border border-white/10 bg-white/10 backdrop-blur-2xl shadow-[0_20px_60px_rgba(15,23,42,0.35)]"
       >
         {/* Desktop & Mobile Top Bar */}
         <div className="flex h-16 items-center justify-between px-4 md:px-6">
