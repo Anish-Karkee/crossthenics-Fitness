@@ -1,28 +1,27 @@
 "use client";
 
-import {  useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "../ui/button";
 import { Search } from "lucide-react";
-import Link from 'next/link'
+import Link from "next/link";
 import Logo from "../../../public/logo/ct-logo01.png";
 import { useSearch } from "@/lib/searchContext";
-
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("");
-  
+  const pathname = usePathname();
+
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "All Product", href: "/allproducts" },
     { name: "Backpacks", href: "/backpacks" },
     { name: "Latest Products", href: "/latestproducts" },
   ];
-const {search, setSearch} = useSearch()
-
+  const { search, setSearch } = useSearch();
 
   return (
     <div className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
@@ -36,14 +35,14 @@ const {search, setSearch} = useSearch()
         <div className="flex h-16 items-center justify-between px-4 md:px-6">
           {/* Logo */}
           <div>
-            <Link href="/" onClick={() => setActiveLink("Home")} >
-            <Image
-              src={Logo}
-              alt="Startup Agency Logo"
-              width={200}
-              height={200}
-              className="h-8 w-auto cursor-pointer object-contain sm:h-10 md:h-12"
-            />
+            <Link href="/">
+              <Image
+                src={Logo}
+                alt="Startup Agency Logo"
+                width={200}
+                height={200}
+                className="h-8 w-auto cursor-pointer object-contain sm:h-10 md:h-12"
+              />
             </Link>
           </div>
 
@@ -53,36 +52,37 @@ const {search, setSearch} = useSearch()
               <Link
                 key={link.name}
                 href={link.href}
-                className={`transition-colors duration-300  hover:text-red-500 ${activeLink === link.name ? 'underline decoration-red-500 decoration-2 underline-offset-[5px]' : ''}`}
-                onClick={() => setActiveLink(link.name)}
+                className={`transition-colors duration-300 hover:text-red-500 ${
+                  pathname === link.href
+                    ? "underline decoration-red-500 decoration-2 underline-offset-[5px]"
+                    : ""
+                }`}
               >
                 {link.name}
-
               </Link>
-
             ))}
           </nav>
 
           {/* Desktop Contact Button */}
-         <div className="hidden md:flex items-center gap-3">
-          <div className="hidden md:flex items-center bg-white/10 rounded-full px-3 py-2">
-            <Search size={18} className="mr-2" />
+          <div className="hidden md:flex items-center gap-3">
+            <div className="hidden md:flex items-center bg-white/10 rounded-full px-3 py-2">
+              <Search size={18} className="mr-2" />
 
-            <input
-              type="text"
-              placeholder="Search..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="bg-transparent outline-none w-40 text-sm"
-            />
+              <input
+                type="text"
+                placeholder="Search..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="bg-transparent outline-none w-40 text-sm"
+              />
+            </div>
+
+            <Link href="/contact">
+              <Button className="cursor-pointer transition-all duration-300 hover:bg-orange-500 hover:text-black hover:scale-115">
+                Contact Us
+              </Button>
+            </Link>
           </div>
-
-          <Link href="/contact">
-            <Button className="cursor-pointer transition-all duration-300 hover:bg-orange-500 hover:text-black hover:scale-115">
-              Contact Us
-            </Button>
-          </Link>
-        </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -115,12 +115,11 @@ const {search, setSearch} = useSearch()
                     {link.name}
                   </Link>
                 ))}
-             
-            
+
                 <Link href="/contact" onClick={() => setIsOpen(false)}>
                   <Button className="mt-2 w-full transition-all duration-300 hover:bg-red-200 hover:text-black">
-                   Contact Us
-                   </Button>
+                    Contact Us
+                  </Button>
                 </Link>
               </div>
             </motion.div>
@@ -130,4 +129,3 @@ const {search, setSearch} = useSearch()
     </div>
   );
 }
-
