@@ -3,6 +3,8 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/navBar";
 import Footer from "@/components/layout/Footer";
 import { SearchProvider } from "@/lib/searchContext";
+import { Toaster } from "@/components/ui/sonner";
+
 export const metadata: Metadata = {
   title: "Crossthenics Fitness",
   description: "A clean glassmorphism  homepage.",
@@ -24,7 +26,7 @@ export default function RootLayout({
         <Navbar />
           {children}
           <Footer />
-        
+          <Toaster/>
         </SearchProvider>
       </body>
     </html>

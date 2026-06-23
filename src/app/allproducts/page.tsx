@@ -5,10 +5,14 @@ import { Card } from "@/components/ui/card";
 import { Button } from "../../components/ui/button";
 import { productData } from "./products/ProductData";
 import { useSearch } from "@/lib/searchContext";
+import { toast } from "sonner";
 
 const AllProducts = () => {
   const { search } = useSearch();
 
+  const handleAddToCart = (productName: string) => {
+    toast.success(`${productName} added to cart!`);
+  };
 
   const filterdProduct = productData.filter((product) => {
     return product.name.toLowerCase().includes(search.toLowerCase());
@@ -24,24 +28,31 @@ const AllProducts = () => {
             filterdProduct.map((product) => (
               <Card
                 key={product.id}
-                className="p-3 md:p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg shadow-black/10  transition-all  duration-300  hover:bg-white/15  hover:scale-[1.02]   hover:shadow-xl "
+                className="p-3 md:p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg shadow-black/10 transition-all duration-300 hover:bg-white/15 hover:scale-[1.02] hover:shadow-xl"
               >
-                <div className="mt-2 p-2 md:p-3 rounded-lg ">
+                <div className="mt-2 p-2 md:p-3 rounded-lg">
                   <Image
                     src={product.image}
                     alt={product.name}
                     className="rounded-3xl object-cover mb-4 transition-transform duration-300 hover:scale-105"
                   />
-                  <h2 className="text-xl md:text-xl  text-black mt-3 mb-6">
+
+                  <h2 className="text-xl md:text-xl text-black mt-3 mb-6">
                     {product.name}
                   </h2>
+
                   <p className="hidden md:block text-gray-800 text-lg leading-relaxed mb-4">
                     {product.description}
                   </p>
+
                   <p className="text-xl font-semibold text-black mb-4">
                     Rs {product.price}
                   </p>
-                  <Button className="bg-black text-white hover:bg-orange-500 hover:text-black hover:scale-115">
+
+                  <Button
+                    onClick={() => handleAddToCart(product.name)}
+                    className="bg-black text-white hover:bg-orange-500 hover:text-black hover:scale-115"
+                  >
                     Add to Cart
                   </Button>
                 </div>
