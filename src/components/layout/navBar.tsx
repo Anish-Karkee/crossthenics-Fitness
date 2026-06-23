@@ -13,12 +13,8 @@ import { useSearch } from "@/lib/searchContext";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("Home");
-  // const filteredProducts = productData.filter((product) =>
-  //   product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //   product.description.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
-
+  const [activeLink, setActiveLink] = useState("");
+  
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "All Product", href: "/allproducts" },
