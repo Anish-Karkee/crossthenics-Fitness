@@ -11,12 +11,14 @@ export default function Footer() {
                 <div className="grid gap-8 md:grid-cols-4">
                     {/* Brand */}
                     <div className="md:col-span-2 md:pl-18" >
+                       <Link href="/">
                         <Image
                             src={logo}
                             alt="Crossthenics Fitness Logo"
                             width={100}
                             height={100}
                         />
+                       </Link>
                         <h2 className="text-2xl font-bold text-white">
                            Crossthenics Fitness
                         </h2>
