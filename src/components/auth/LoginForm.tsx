@@ -7,9 +7,7 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     console.log({
@@ -21,14 +19,15 @@ export default function LoginForm() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="space-y-4 w-full max-w-md"
-    >
+    <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-md p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(31,38,135,0.25)]">
       <div>
-        <label className="block mb-2 text-sm font-medium">
-          Email
-        </label>
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold">Welcome Back</h1>
+          <p className="text-gray-500 mt-2">
+            Sign in to continue to your account
+          </p>
+        </div>
+        <label className="block mb-2 text-sm font-medium">Email</label>
         <input
           type="email"
           placeholder="Enter your email"
@@ -40,17 +39,27 @@ export default function LoginForm() {
       </div>
 
       <div>
-        <label className="block mb-2 text-sm font-medium">
-          Password
-        </label>
+        <label className="block mb-2 text-sm font-medium">Password</label>
         <input
           type="password"
           placeholder="Enter password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full rounded-lg border px-4 py-2"
-          required
+          className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2  focus:ring-orange-200" required
         />
+        <div className="flex items-center justify-between text-sm">
+          <label className="flex items-center gap-2">
+            <input type="checkbox" />
+            Remember me
+          </label>
+
+          <Link
+            href="/forgot-password"
+            className="text-orange-500 hover:underline"
+          >
+            Forgot password?
+          </Link>
+        </div>
       </div>
 
       <button
@@ -60,20 +69,19 @@ export default function LoginForm() {
         Login
       </button>
       <div>
-        <p>Don&apos;t have account ? 
-            <Link
-    href="/signup"
-    className="text-red-800 cursor-pointer hover:text-orange-500"
-  >
-    Sign-UP
-  </Link>
+        <p>
+          Don&apos;t have account ?
+          <Link
+            href="/signup"
+            className="text-red-800 cursor-pointer hover:text-orange-500"
+          >
+            Sign-UP
+          </Link>
         </p>
-        
       </div>
     </form>
   );
 }
-
 
 // import OAuth from "../auth/Oauth";
 
