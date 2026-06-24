@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -58,6 +59,17 @@ export default function LoginForm() {
       >
         Login
       </button>
+      <div>
+        <p>Don&apos;t have account ? 
+            <Link
+    href="/signup"
+    className="text-red-800 cursor-pointer hover:text-orange-500"
+  >
+    Sign-UP
+  </Link>
+        </p>
+        
+      </div>
     </form>
   );
 }
