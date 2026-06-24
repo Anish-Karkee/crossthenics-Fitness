@@ -121,6 +121,11 @@ export function Navbar() {
                 ))}
 
                 <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  <Link href="/login">
+            <Button className="mt-2 w-full transition-all duration-300 hover:bg-orange-500 hover:text-black hover:scale-112">
+              Log-In
+            </Button>
+            </Link>
                   <Button className="mt-2 w-full transition-all duration-300 hover:bg-red-200 hover:text-black">
                     Contact Us
                   </Button>
