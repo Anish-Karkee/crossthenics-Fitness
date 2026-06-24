@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function SignupForm() {
   const [formData, setFormData] = useState({
@@ -10,23 +11,17 @@ export default function SignupForm() {
     confirmPassword: "",
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (
-      formData.password !== formData.confirmPassword
-    ) {
+    if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match");
       return;
     }
@@ -37,14 +32,9 @@ export default function SignupForm() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="space-y-4 w-full max-w-md"
-    >
+    <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-md">
       <div>
-        <label className="block mb-2 text-sm font-medium">
-          Full Name
-        </label>
+        <label className="block mb-2 text-sm font-medium">Full Name</label>
         <input
           type="text"
           name="fullName"
@@ -57,9 +47,7 @@ export default function SignupForm() {
       </div>
 
       <div>
-        <label className="block mb-2 text-sm font-medium">
-          Email
-        </label>
+        <label className="block mb-2 text-sm font-medium">Email</label>
         <input
           type="email"
           name="email"
@@ -72,9 +60,7 @@ export default function SignupForm() {
       </div>
 
       <div>
-        <label className="block mb-2 text-sm font-medium">
-          Password
-        </label>
+        <label className="block mb-2 text-sm font-medium">Password</label>
         <input
           type="password"
           name="password"
@@ -107,6 +93,14 @@ export default function SignupForm() {
       >
         Create Account
       </button>
+      <div>
+        <p>
+          Already have account ?
+          <Link href="/login" className="text-red-800 cursor-pointer hover:text-orange-500">
+           Log-In
+          </Link>
+        </p>
+      </div>
     </form>
   );
 }
