@@ -1,53 +1,80 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+
+type LoginFormValues = {
+  email: string;
+  password: string;
+};
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormValues>({ mode: "onSubmit" });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    console.log({
-      email,
-      password,
-    });
-
-    // API call goes here
+  const onSubmit = (data: LoginFormValues) => {
+    console.log(data);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-md p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(31,38,135,0.25)]">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full max-w-md space-y-4 rounded-3xl border border-white/20 bg-white/10 p-8 shadow-[0_8px_32px_rgba(31,38,135,0.25)] backdrop-blur-xl"
+    >
       <div>
-        <div className="text-center mb-8">
+        <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold">Welcome Back</h1>
-          <p className="text-gray-500 mt-2">
+          <p className="mt-2 text-gray-500">
             Sign in to continue to your account
           </p>
         </div>
-        <label className="block mb-2 text-sm font-medium">Email</label>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-lg border px-4 py-2"
-          required
-        />
+
+        <div>
+          <label className="mb-2 block text-sm font-medium">Email</label>
+          <Input
+            type="email"
+            placeholder="Enter your email"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Enter a valid email address",
+              },
+            })}
+            aria-invalid={!!errors.email}
+            className={cn("h-10", errors.email && "border-red-500 focus-visible:ring-red-500")}
+          />
+          {errors.email && (
+            <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
+          )}
+        </div>
       </div>
 
       <div>
-        <label className="block mb-2 text-sm font-medium">Password</label>
-        <input
+        <label className="mb-2 block text-sm font-medium">Password</label>
+        <Input
           type="password"
           placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2  focus:ring-orange-200" required
+          {...register("password", {
+            required: "Password is required",
+            minLength: {
+              value: 6,
+              message: "Password must be at least 6 characters",
+            },
+          })}
+          aria-invalid={!!errors.password}
+          className={cn("h-10", errors.password && "border-red-500 focus-visible:ring-red-500")}
         />
-        <div className="flex items-center justify-between text-sm">
+        {errors.password && (
+          <p className="mt-1 text-sm text-red-500">{errors.password.message}</p>
+        )}
+
+        <div className="mt-3 flex items-center justify-between text-sm">
           <label className="flex items-center gap-2">
             <input type="checkbox" />
             Remember me
@@ -64,34 +91,25 @@ export default function LoginForm() {
 
       <button
         type="submit"
-        className="w-full rounded-lg bg-black text-white py-2 cursor-pointer transition-all duration-300 hover:text-black hover:bg-orange-500 hover:scale-110"
+        className="w-full cursor-pointer rounded-lg bg-black py-2 text-white transition-all duration-300 hover:scale-110 hover:bg-orange-500 hover:text-black"
       >
         Login
       </button>
+
       <div className="flex flex-row justify-between">
         <p>
           Don&apos;t have account ?
           <Link
             href="/auth/signup"
-            className="text-red-900 cursor-pointer hover:text-orange-500"
+            className="cursor-pointer text-red-900 hover:text-orange-500"
           >
             Sign-UP
           </Link>
         </p>
-        <Link href="/" className="text-black cursor-pointer hover:text-orange-500">
-           Back to Home
-          </Link>
+        <Link href="/" className="cursor-pointer text-black hover:text-orange-500">
+          Back to Home
+        </Link>
       </div>
     </form>
   );
 }
-
-// import OAuth from "../auth/Oauth";
-
-// export default function LoginPage() {
-//   return (
-//     <div>
-//       <OAuth />
-//     </div>
-//   );
-// }
