@@ -99,13 +99,19 @@ export default function SignupForm() {
       >
         Create Account
       </button>
-      <div>
+      <div className="flex flex-row justify-between">
         <p>
           Already have account ?
           <Link href="/login" className="text-red-800 cursor-pointer hover:text-orange-500">
            Log-In
           </Link>
         </p>
+        <Link href="/" className="text-black cursor-pointer hover:text-orange-500">
+           Back to Home
+          </Link>
+      </div>
+      <div>
+        
       </div>
     </form>
   );

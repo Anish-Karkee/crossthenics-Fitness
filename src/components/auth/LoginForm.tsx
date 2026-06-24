@@ -68,16 +68,19 @@ export default function LoginForm() {
       >
         Login
       </button>
-      <div>
+      <div className="flex flex-row justify-between">
         <p>
           Don&apos;t have account ?
           <Link
-            href="/signup"
+            href="/auth/signup"
             className="text-red-800 cursor-pointer hover:text-orange-500"
           >
             Sign-UP
           </Link>
         </p>
+        <Link href="/" className="text-black cursor-pointer hover:text-orange-500">
+           Back to Home
+          </Link>
       </div>
     </form>
   );

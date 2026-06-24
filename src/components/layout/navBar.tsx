@@ -76,7 +76,7 @@ export function Navbar() {
                 className="bg-transparent outline-none w-40 text-sm"
               />
             </div>
-            <Link href="/login">
+            <Link href="/auth/login">
             <Button className="cursor-pointer transition-all duration-300 hover:bg-orange-500 hover:text-black hover:scale-112">
               Log-In
             </Button>

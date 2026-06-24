@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "@/components/layout/navBar";
-import Footer from "@/components/layout/Footer";
-import { SearchProvider } from "@/lib/searchContext";
-import { Toaster } from "@/components/ui/sonner";
+import { AppShell } from "@/components/layout/AppShell";
 
 export const metadata: Metadata = {
   title: "Crossthenics Fitness",
@@ -21,13 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
-        <SearchProvider>
-          
-        <Navbar />
-          {children}
-          <Footer />
-          <Toaster/>
-        </SearchProvider>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );
