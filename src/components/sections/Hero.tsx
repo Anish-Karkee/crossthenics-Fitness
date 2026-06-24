@@ -5,7 +5,7 @@ import landimage from "../../../public/web images/crossthenicsfitness-20260608-0
 
 export default function Hero() {
   return (
-    <section className="w-full py-36 px-4 md:px-6 bg-white">
+    <section className="w-full py-36 px-4 md:px-6 bg-linear-to-br from-red-100 via-white to-red-200">
       
        
       

@@ -73,7 +73,7 @@ export default function LoginForm() {
           Don&apos;t have account ?
           <Link
             href="/auth/signup"
-            className="text-red-800 cursor-pointer hover:text-orange-500"
+            className="text-red-900 cursor-pointer hover:text-orange-500"
           >
             Sign-UP
           </Link>

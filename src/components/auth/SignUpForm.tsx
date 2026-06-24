@@ -102,7 +102,7 @@ export default function SignupForm() {
       <div className="flex flex-row justify-between">
         <p>
           Already have account ?
-          <Link href="/login" className="text-red-800 cursor-pointer hover:text-orange-500">
+          <Link href="/login" className="text-red-900 cursor-pointer hover:text-orange-500">
            Log-In
           </Link>
         </p>

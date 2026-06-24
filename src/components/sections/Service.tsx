@@ -4,7 +4,7 @@ import sidebag from "../../../public/web images/side.jpg";
 
 export default function Service() {
     return (
-        <section className="w-full  px-6 md:px-6 bg-white">
+        <section className="w-full  px-6 md:px-6 bg-linear-to-br from-white via-red-200 to-white">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-12 text-black">
                 <div className="w-full md:w-1/2">
                 <h2 className="text-4xl md:text-5xl font-bold text-black mt-3 mb-6">
