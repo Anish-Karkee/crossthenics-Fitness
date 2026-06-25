@@ -6,7 +6,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-gray-500 text-gray-300">
+        <footer className="bg-gray-300 text-gray-400">
             <div className="max-w-7xl mx-auto px-6 py-12">
                 <div className="grid gap-8 md:grid-cols-4">
                     {/* Brand */}
@@ -19,7 +19,7 @@ export default function Footer() {
                             height={100}
                         />
                        </Link>
-                        <h2 className="text-2xl font-bold text-white">
+                        <h2 className="text-2xl font-bold text-black">
                            Crossthenics Fitness
                         </h2>
                         <p className="mt-3 text-sm text-gray-400">
@@ -31,22 +31,22 @@ export default function Footer() {
 
                     {/* Resources */}
                     <div>
-                        <h3 className="mb-4 text-lg font-semibold text-white">
+                        <h3 className="mb-4 text-lg font-semibold text-black">
                             Legals
                         </h3>
                         <ul className="space-y-2">
                             <li>
-                                <Link href="/shipping" className="hover:text-white">
+                                <Link href="/shipping" className="hover:text-black">
                                     shipping policy
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/refund" className="hover:text-white">
+                                <Link href="/refund" className="hover:text-black">
                                    Refund policy
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/terms" className="hover:text-white">
+                                <Link href="/terms" className="hover:text-black">
                                     Terms & Conditions
                                 </Link>
                             </li>
@@ -55,22 +55,22 @@ export default function Footer() {
 
                     {/* Social Links */}
                     <div>
-                        <h3 className="mb-4 text-lg font-semibold text-white">
+                        <h3 className="mb-4 text-lg font-semibold text-black">
                             Follow Us
                         </h3>
                         <ul className="space-y-2">
                             <li>
-                                <a href="https://www.facebook.com/crossthenicsfitness" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                                <a href="https://www.facebook.com/crossthenicsfitness" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500">
                                     Facebook
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.instagram.com/crossthenicsfitness" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                                <a href="https://www.instagram.com/crossthenicsfitness" target="_blank" rel="noopener noreferrer" className="hover:text-red-400">
                                     Instagram
                                 </a>
                             </li>
                             <li>
-                                <a href="https://wa.me/9779804165664" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                                <a href="https://wa.me/9779804165664" target="_blank" rel="noopener noreferrer" className="hover:text-green-500">
                                     whatsapp
                                 </a>
                             </li>
