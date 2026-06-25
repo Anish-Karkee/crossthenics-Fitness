@@ -119,7 +119,7 @@ const ContactPage = () => {
                 <label htmlFor="message" className="block mb-1.5 text-sm font-medium text-gray-700">Your Message</label>
                 <textarea
                   id="message"
-                  className="w-full p-3 border border-gray-300 rounded-md text-sm min-h-[140px] resize-y focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
+                  className="w-full p-3 border border-gray-300 rounded-md text-sm min-h-35 resize-y focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
                   required
                   defaultValue=""
                 />
