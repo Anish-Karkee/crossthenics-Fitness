@@ -80,7 +80,7 @@ export default function Footer() {
 
                 {/* Bottom Section */}
                 <div className="mt-10 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
-                    © {currentYear} YourBrand. All rights reserved.
+                    © {currentYear} Crossthenics Fitness. All rights reserved.
                 </div>
             </div>
         </footer>
