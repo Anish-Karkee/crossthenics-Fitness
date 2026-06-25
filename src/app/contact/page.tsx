@@ -57,7 +57,7 @@ const ContactPage = () => {
 
             {/* Social Icons */}
             <div className="flex gap-3 mt-8">
-              <a href="https://www.facebook.com/people/Crossthenics/61555726779804/?mibextid=wwXIfr&rdid=58cQcAPjpXPARQjs&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F15oxRiQ9NE%2F%3Fmibextid%3DwwXIfr" className="w-10 h-10 bg-gray-700 flex items-center justify-center rounded-full text-white hover:bg-blue-600 hover:-translate-y-1 transition duration-300">
+              <a href="https://www.facebook.com/people/Crossthenics/61555726779804/?mibextid=wwXIfr&rdid=58cQcAPjpXPARQjs&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F15oxRiQ9NE%2F%3Fmibextid%3DwwXIfr" className="w-10 h-10 bg-gray-700 flex items-center justify-center rounded-full text-white hover:bg-blue-500 hover:-translate-y-1 transition duration-300">
                 <i className="fab fa-facebook-f" />
               </a>
               <a href="https://www.instagram.com/crossthenicsfitness" className="w-10 h-10 bg-gray-700 flex items-center justify-center rounded-full text-white hover:bg-red-600 hover:-translate-y-1 transition duration-300">
