@@ -1,7 +1,30 @@
 
-import { Button } from '../../components/ui/button'
+"use client";
+
+import { useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+
+type ContactFormValues = {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+};
 
 const ContactPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ContactFormValues>({ mode: "onSubmit" });
+
+  const onSubmit = (data: ContactFormValues) => {
+    console.log("Contact form submitted", data);
+  };
+
   return (
     <div className="bg-white overflow-x-hidden py-10 px-5">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -76,58 +99,108 @@ const ContactPage = () => {
               <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-red-400" />
             </h2>
 
-            <form className="space-y-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
               <div>
                 <label htmlFor="name" className="block mb-1.5 text-sm font-medium text-gray-700">Your Name</label>
-                <input
+                <Input
                   type="text"
                   id="name"
-                  className="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
-                  required
+                  placeholder="Enter your name"
+                  {...register("name", { required: "Name is required" })}
+                  aria-invalid={!!errors.name}
+                  className={cn(
+                    "w-full p-3",
+                    errors.name && "border-red-500 focus-visible:ring-red-500"
+                  )}
                 />
+                {errors.name && (
+                  <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
+                )}
               </div>
 
               <div>
                 <label htmlFor="email" className="block mb-1.5 text-sm font-medium text-gray-700">Email Address</label>
-                <input
+                <Input
                   type="email"
                   id="email"
-                  className="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
-                  required
+                  placeholder="Enter your email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Enter a valid email address",
+                    },
+                  })}
+                  aria-invalid={!!errors.email}
+                  className={cn(
+                    "w-full p-3",
+                    errors.email && "border-red-500 focus-visible:ring-red-500"
+                  )}
                 />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
+                )}
               </div>
 
               <div>
                 <label htmlFor="phone" className="block mb-1.5 text-sm font-medium text-gray-700">Phone Number</label>
-                <input
+                <Input
                   type="tel"
                   id="phone"
-                  className="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
+                  placeholder="Enter your phone number"
+                  {...register("phone", { required: "Phone number is required" })}
+                  aria-invalid={!!errors.phone}
+                  className={cn(
+                    "w-full p-3",
+                    errors.phone && "border-red-500 focus-visible:ring-red-500"
+                  )}
                 />
+                {errors.phone && (
+                  <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>
+                )}
               </div>
 
               <div>
                 <label htmlFor="subject" className="block mb-1.5 text-sm font-medium text-gray-700">Subject</label>
-                <input
+                <Input
                   type="text"
                   id="subject"
-                  className="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
+                  placeholder="Enter a subject"
+                  {...register("subject", { required: "Subject is required" })}
+                  aria-invalid={!!errors.subject}
+                  className={cn(
+                    "w-full p-3",
+                    errors.subject && "border-red-500 focus-visible:ring-red-500"
+                  )}
                 />
+                {errors.subject && (
+                  <p className="mt-1 text-sm text-red-500">{errors.subject.message}</p>
+                )}
               </div>
 
               <div>
                 <label htmlFor="message" className="block mb-1.5 text-sm font-medium text-gray-700">Your Message</label>
                 <textarea
                   id="message"
-                  className="w-full p-3 border border-gray-300 rounded-md text-sm min-h-35 resize-y focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
-                  required
-                  defaultValue=""
+                  placeholder="Write your message"
+                  {...register("message", { required: "Message is required" })}
+                  aria-invalid={!!errors.message}
+                  className={cn(
+                    "w-full p-3 border border-gray-300 rounded-md text-sm min-h-35 resize-y focus:outline-none focus:ring-2 focus:ring-blue-300 transition",
+                    errors.message && "border-red-500 focus:ring-red-300"
+                  )}
                 />
+                {errors.message && (
+                  <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>
+                )}
               </div>
 
-              <Button className="cursor-pointer transition-all duration-300 hover:bg-orange-500 hover:text-black hover:scale-115">
-            Send Message
-          </Button>
+              <Button
+                type="submit"
+                className="cursor-pointer transition-all duration-300 hover:bg-orange-500 hover:text-black hover:scale-115"
+              >
+                Send Message
+              </Button>
             </form>
           </div>
 
