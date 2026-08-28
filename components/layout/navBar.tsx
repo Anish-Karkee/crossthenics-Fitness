@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "../ui/button";
 import { Search } from "lucide-react";
 import Link from "next/link";
-import Logo from "../../../public/logo/ct-logo01.png";
+import Logo from "@/public/logo/ct-logo01.png";
 import { useSearch } from "@/lib/searchContext";
 import { usePathname } from "next/navigation";
 

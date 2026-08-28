@@ -1,7 +1,5 @@
-import { Navbar } from "@/components/layout/navBar";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Service";
-import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import serviceImage from "../../../public/web images/bag.jpg";
-import sidebag from "../../../public/web images/side.jpg";
+import serviceImage from "@/public/web images/bag.jpg";
+import sidebag from "@/public/web images/side.jpg";
 
 export default function Service() {
     return (

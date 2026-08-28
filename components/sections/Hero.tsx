@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import landimage from "../../../public/web images/crossthenicsfitness-20260608-0001.jpg";
+import landimage from "@/public/web images/crossthenicsfitness-20260608-0001.jpg";
 
 export default function Hero() {
   return (
