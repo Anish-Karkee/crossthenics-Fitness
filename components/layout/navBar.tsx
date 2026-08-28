@@ -1,15 +1,8 @@
-﻿"use client";
+﻿
+"use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  ArrowRight,
-  Menu,
-  Search,
-  ShoppingBag,
-  Sparkles,
-  UserRound,
-  X,
-} from "lucide-react";
+import { ArrowRight, Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -34,19 +27,39 @@ export function Navbar() {
   const { search, setSearch } = useSearch();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 35);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 35);
+    };
+
     handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsOpen(false);
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
     };
+
     window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
   }, []);
+
+  // Close mobile menu when navigating
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   const isActive = (href: string) =>
     href === "/"
@@ -58,18 +71,31 @@ export function Navbar() {
       <motion.header
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        transition={{
+          duration: 0.55,
+          ease: [0.16, 1, 0.3, 1],
+        }}
         className="pointer-events-auto relative w-full max-w-[1500px]"
       >
-        {/* Main Navbar */}
+        {/* MAIN NAVBAR */}
         <div
-          className={cn("relative mx-auto h-[72px] overflow-hidden rounded-2xl border", "border-black/[0.08] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.08)]", "transition-all duration-300", scrolled && "rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.14)]",)}
+          className={cn(
+            "relative mx-auto min-h-[72px] overflow-visible rounded-2xl border",
+            "border-black/[0.08] bg-white",
+            "shadow-[0_8px_30px_rgba(0,0,0,0.08)]",
+            "transition-all duration-300",
+            scrolled &&
+              "rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.14)]",
+          )}
         >
           {/* Top Highlight */}
           <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
 
-          <div className="flex h-full items-center gap-2 px-3 sm:px-5 lg:px-6 xl:px-8">
-            {/* Logo */}
+          {/* NAVBAR CONTENT */}
+
+          <div className="flex h-[72px] items-center gap-2 px-3 sm:px-5 lg:px-6 xl:px-8">
+            {/* LOGO */}
+
             <Link
               href="/"
               aria-label="Crossthenics Fitness"
@@ -90,7 +116,8 @@ export function Navbar() {
               </motion.div>
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* DESKTOP NAVIGATION */}
+
             <nav
               aria-label="Main navigation"
               className="hidden min-w-0 flex-1 items-center justify-center lg:flex"
@@ -105,7 +132,8 @@ export function Navbar() {
                       href={link.href}
                       className={cn(
                         "relative whitespace-nowrap rounded-full px-2 py-2 text-[9px] font-bold uppercase tracking-[0.08em] transition-all duration-300",
-                        "xl:px-3 xl:text-[10px] 2xl:px-3.5 2xl:text-[10.5px]",
+                        "xl:px-3 xl:text-[10px]",
+                        "2xl:px-3.5 2xl:text-[10.5px]",
                         active
                           ? "text-black"
                           : "text-black/60 hover:text-black",
@@ -132,7 +160,10 @@ export function Navbar() {
               </div>
             </nav>
 
-            {/* Desktop Actions */}
+            {/* ================================================== */}
+            {/* DESKTOP ACTIONS */}
+            {/* ================================================== */}
+
             <div className="relative z-20 hidden shrink-0 items-center gap-1 md:flex xl:gap-1.5 2xl:gap-2">
               {/* Search */}
               <div className="flex h-9 w-9 shrink-0 items-center overflow-hidden rounded-full border border-black/[0.10] bg-black/[0.025] transition-all duration-300 hover:border-black/20 xl:w-[135px] 2xl:w-[155px]">
@@ -143,6 +174,7 @@ export function Navbar() {
                     className="text-black/60"
                   />
                 </div>
+
                 <input
                   type="text"
                   placeholder="Search gear..."
@@ -163,6 +195,7 @@ export function Navbar() {
                   strokeWidth={1.8}
                   className="transition-transform duration-300 group-hover:scale-110"
                 />
+
                 <span className="ml-2 hidden text-[9px] font-bold uppercase tracking-[0.11em] xl:inline">
                   Account
                 </span>
@@ -179,6 +212,7 @@ export function Navbar() {
                   strokeWidth={1.8}
                   className="transition-transform duration-300 group-hover:-translate-y-0.5"
                 />
+
                 <span className="absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-[#FF4500] shadow-[0_0_8px_rgba(255,69,0,0.8)]" />
               </Link>
 
@@ -191,6 +225,7 @@ export function Navbar() {
                 <span className="hidden text-[9px] uppercase tracking-[0.10em] xl:inline">
                   Contact
                 </span>
+
                 <ArrowRight
                   size={13}
                   strokeWidth={2}
@@ -199,40 +234,70 @@ export function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Actions */}
-            <div className="relative z-20 ml-auto flex items-center gap-2 md:hidden">
+            {/* ================================================== */}
+            {/* MOBILE ACTIONS */}
+            {/* ================================================== */}
+
+            <div className="relative z-30 ml-auto flex items-center gap-2 md:hidden">
+              {/* Mobile Cart */}
               <Link
                 href="/cart"
                 aria-label="Shopping cart"
                 className="relative flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black/[0.03] text-black/75 transition-all hover:bg-black/[0.07]"
               >
                 <ShoppingBag size={16} strokeWidth={1.8} />
+
                 <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-[#FF4500]" />
               </Link>
 
+              {/* Mobile Menu Button */}
               <button
                 type="button"
                 onClick={() => setIsOpen((prev) => !prev)}
                 aria-label={isOpen ? "Close navigation" : "Open navigation"}
                 aria-expanded={isOpen}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black/[0.03] text-black transition-all duration-300 hover:bg-black/[0.07]"
+                className={cn(
+                  "flex h-10 w-10 items-center justify-center rounded-full border",
+                  "border-black/10 bg-black/[0.03] text-black",
+                  "transition-all duration-300",
+                  "hover:bg-black/[0.07]",
+                  isOpen && "bg-black/[0.08]",
+                )}
               >
                 <AnimatePresence mode="wait" initial={false}>
                   {isOpen ? (
                     <motion.span
                       key="close"
-                      initial={{ opacity: 0, rotate: -90 }}
-                      animate={{ opacity: 1, rotate: 0 }}
-                      exit={{ opacity: 0, rotate: 90 }}
+                      initial={{
+                        opacity: 0,
+                        rotate: -90,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        rotate: 0,
+                      }}
+                      exit={{
+                        opacity: 0,
+                        rotate: 90,
+                      }}
                     >
                       <X size={19} />
                     </motion.span>
                   ) : (
                     <motion.span
                       key="menu"
-                      initial={{ opacity: 0, rotate: 90 }}
-                      animate={{ opacity: 1, rotate: 0 }}
-                      exit={{ opacity: 0, rotate: -90 }}
+                      initial={{
+                        opacity: 0,
+                        rotate: 90,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        rotate: 0,
+                      }}
+                      exit={{
+                        opacity: 0,
+                        rotate: -90,
+                      }}
                     >
                       <Menu size={19} />
                     </motion.span>
@@ -242,23 +307,45 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Menu */}
+          {/* ====================================================== */}
+          {/* MOBILE DROPDOWN */}
+          {/* ====================================================== */}
+
           <AnimatePresence>
             {isOpen && (
               <motion.div
-                initial={{ opacity: 0, y: -12, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -12, scale: 0.98 }}
-                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-2 overflow-hidden rounded-2xl border border-black/[0.10] bg-white p-3 shadow-[0_25px_70px_rgba(0,0,0,0.15)] md:hidden"
+                initial={{
+                  opacity: 0,
+                  y: -10,
+                  scale: 0.98,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                  y: -10,
+                  scale: 0.98,
+                }}
+                transition={{
+                  duration: 0.25,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="relative z-40 mx-2 mb-2 overflow-hidden rounded-2xl border border-black/[0.10] bg-white p-3 shadow-[0_25px_70px_rgba(0,0,0,0.15)] md:hidden"
               >
-                {/* Mobile Search */}
+                {/* ================================================== */}
+                {/* MOBILE SEARCH */}
+                {/* ================================================== */}
+
                 <div className="mb-3 flex items-center rounded-2xl border border-black/[0.08] bg-black/[0.03] px-3">
                   <Search
                     size={15}
                     strokeWidth={1.8}
                     className="mr-2.5 shrink-0 text-black/50"
                   />
+
                   <input
                     type="text"
                     placeholder="Search gear, backpacks..."
@@ -268,7 +355,10 @@ export function Navbar() {
                   />
                 </div>
 
-                {/* Mobile Links */}
+                {/* ================================================== */}
+                {/* MOBILE LINKS */}
+                {/* ================================================== */}
+
                 <nav aria-label="Mobile navigation">
                   <div className="space-y-1">
                     {navLinks.map((link) => {
@@ -295,6 +385,7 @@ export function Navbar() {
                                   : "bg-black/20",
                               )}
                             />
+
                             <span
                               className={cn(
                                 "text-xs font-bold uppercase tracking-[0.12em]",
@@ -306,6 +397,7 @@ export function Navbar() {
                               {link.name}
                             </span>
                           </div>
+
                           <ArrowRight
                             size={14}
                             className={cn(
@@ -321,7 +413,10 @@ export function Navbar() {
                   </div>
                 </nav>
 
-                {/* Mobile Buttons */}
+                {/* ================================================== */}
+                {/* MOBILE BUTTONS */}
+                {/* ================================================== */}
+
                 <div className="mt-3 grid grid-cols-2 gap-2 border-t border-black/[0.08] pt-3">
                   <Link
                     href="/auth/login"
