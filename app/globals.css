@@ -63,9 +63,9 @@
 
 :root {
   /* ── BACKGROUND & SURFACES ── */
-  --background: #111214;          /* Dark graphite — richer than pure black */
-  --surface: #191B1E;             /* Card/panel surface */
-  --surface-light: #222428;       /* Raised / active surface */
+  --background: #080808;          /* Deep black — matches hero page */
+  --surface: #111214;             /* Card/panel surface */
+  --surface-light: #191B1E;       /* Raised / active surface */
 
   /* ── ACCENT / PRIMARY ── */
   --primary: #FF4500;             /* Vivid orange-red — FitZone signature */
@@ -118,8 +118,23 @@
     @apply bg-background text-foreground antialiased;
     background-color: var(--background);
     color: var(--foreground);
-    /* Subtle charcoal texture via SVG noise */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.028'/%3E%3C/svg%3E");
+    /* ── Hero-style atmospheric background: noise + grid + red ambient ── */
+    background-image:
+      /* Subtle noise grain */
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.028'/%3E%3C/svg%3E"),
+      /* Fine grid overlay — matches hero */
+      linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px),
+      /* Red ambient glow top-right — matches hero's orange panel atmosphere */
+      radial-gradient(ellipse 80% 60% at 80% -10%, rgba(255,69,0,0.13) 0%, transparent 65%),
+      /* Red ambient glow bottom-left — depth */
+      radial-gradient(ellipse 60% 40% at -10% 100%, rgba(255,69,0,0.07) 0%, transparent 60%);
+    background-size:
+      400px 400px,
+      60px 60px,
+      60px 60px,
+      100% 100%,
+      100% 100%;
     selection-background: rgba(255, 69, 0, 0.45);
   }
   ::selection {
@@ -493,83 +508,84 @@
   z-index: 0;
   overflow: hidden;
   isolation: isolate;
-  background-color: #111214;
+  background-color: #080808;       /* Deep black — matches Hero */
   pointer-events: none;
 }
 
-.cinematic-blob {
+/* ── Hero-style solid red right panel (desktop only) ── */
+.cinematic-red-panel {
   position: absolute;
-  border-radius: 9999px;
+  right: 0;
+  top: 0;
+  width: 38%;
+  height: 100%;
+  background-color: #FF4500;
   pointer-events: none;
-  will-change: transform;
 }
 
-/* BLOB 1 — Upper orange-red hero glow */
-.cinematic-blob-hero {
-  top: -25vh;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 130vw;
-  height: 90vh;
-  background: radial-gradient(
-    ellipse at 50% 25%,
-    rgba(255, 69, 0, 0.22) 0%,
-    rgba(200, 50, 0, 0.10) 42%,
-    transparent 70%
+/* ── Subtle vertical gradient sheen over the red panel ── */
+.cinematic-red-panel-sheen {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 38%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.10) 0%,
+    transparent 45%,
+    rgba(0, 0, 0, 0.12) 100%
   );
-  filter: blur(90px);
-  mix-blend-mode: screen;
+  opacity: 0.30;
+  pointer-events: none;
 }
 
-/* BLOB 2 — Mid-page warm ember glow */
-.cinematic-blob-ember {
-  top: 30vh;
-  right: -12vw;
-  width: 75vw;
-  height: 65vh;
+/* ── Fine 60px grid overlay — matches Hero ── */
+.cinematic-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* ── Red ambient glow at the black/red seam — matches Hero's edge glow ── */
+.cinematic-seam-glow {
+  position: absolute;
+  top: 35%;
+  right: 24%;
+  width: 500px;
+  height: 500px;
+  transform: translate(50%, -50%);
   background: radial-gradient(
-    ellipse at 70% 50%,
-    rgba(255, 107, 53, 0.14) 0%,
-    rgba(255, 69, 0, 0.06) 50%,
-    transparent 72%
+    circle,
+    rgba(255, 69, 0, 0.28) 0%,
+    transparent 65%
   );
-  filter: blur(110px);
-  mix-blend-mode: screen;
+  filter: blur(70px);
+  pointer-events: none;
 }
 
-/* BLOB 3 — Bottom-left deep orange bleed */
-.cinematic-blob-bottom {
-  bottom: -12vh;
-  left: -10vw;
-  width: 65vw;
-  height: 60vh;
-  background: radial-gradient(
-    ellipse at 30% 70%,
-    rgba(180, 45, 0, 0.10) 0%,
-    rgba(100, 25, 0, 0.05) 55%,
-    transparent 75%
-  );
-  filter: blur(130px);
-  mix-blend-mode: screen;
-}
-
-/* BLOB 4 — Cool silver haze (color-temperature contrast) */
-.cinematic-blob-silver {
-  top: 8vh;
-  left: -6vw;
-  width: 55vw;
+/* ── Bottom-left atmospheric red bleed ── */
+.cinematic-bottom-glow {
+  position: absolute;
+  bottom: -10vh;
+  left: -5vw;
+  width: 60vw;
   height: 55vh;
   background: radial-gradient(
-    ellipse at 20% 20%,
-    rgba(220, 220, 240, 0.04) 0%,
-    rgba(180, 180, 200, 0.02) 50%,
-    transparent 72%
+    ellipse at 30% 70%,
+    rgba(255, 69, 0, 0.07) 0%,
+    transparent 70%
   );
-  filter: blur(150px);
-  mix-blend-mode: screen;
+  filter: blur(120px);
+  pointer-events: none;
 }
 
-/* SVG Film Grain Texture */
+/* ── SVG Film Grain Texture ── */
 .cinematic-grain {
   position: absolute;
   inset: 0;
@@ -579,18 +595,13 @@
   opacity: 1;
 }
 
-/* Vignette */
-.cinematic-vignette {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at 50% 40%,
-    transparent 35%,
-    rgba(17, 18, 20, 0.20) 62%,
-    rgba(17, 18, 20, 0.50) 82%,
-    rgba(17, 18, 20, 0.80) 100%
-  );
-  pointer-events: none;
+/* ── Mobile: hide red panel & seam glow, keep black bg ── */
+@media (max-width: 1023px) {
+  .cinematic-red-panel,
+  .cinematic-red-panel-sheen,
+  .cinematic-seam-glow {
+    display: none;
+  }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────

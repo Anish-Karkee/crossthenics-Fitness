@@ -72,36 +72,17 @@ export default function CategorySection() {
         
         {/* ── SECTION HEADER ────────────────────────────────────────── */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full glass-pill-red px-4 py-1.5 mb-5"
-          >
-            <Sparkles size={12} className="text-[#FF4500]" />
-            <span className="text-xs font-black uppercase tracking-widest text-[#FF4500]">
+          <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 rounded-full glass-pill-red px-4 py-1.5 mb-5">
+            <span className="text-l font-black uppercase tracking-widest text-[#FFFFFF]">
               Browse By Category
             </span>
           </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tighter text-white leading-[0.95] mb-6"
-          >
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tighter text-white leading-[0.95] mb-6">
             DISCOVER THE <span className="text-electric-red">ARSENAL.</span>
           </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-lg text-[#A8A6A1] leading-relaxed font-normal"
-          >
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="text-base sm:text-lg text-[#A8A6A1] leading-relaxed font-normal">
             Precision-crafted for maximum performance. Select a category to explore competition-grade gear.
           </motion.p>
         </div>
@@ -109,15 +90,7 @@ export default function CategorySection() {
         {/* ── 4 CINEMATIC CATEGORY CARDS GRID ───────────────────────── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 items-stretch">
           {categories.map((cat, idx) => (
-            <motion.div
-              key={cat.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              whileHover={{ y: -6 }}
-              className="relative overflow-hidden rounded-[28px] border border-white/10 hover:border-[#FF4500]/50 shadow-[0_20px_50px_rgba(0,0,0,0.9)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_30px_rgba(255, 69, 0,0.22)] transition-all duration-500 group aspect-[3/4] flex flex-col justify-between p-6 cursor-pointer bg-[#0B0C0E]"
-            >
+            <motion.div key={cat.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: idx * 0.1 }} whileHover={{ y: -6 }} className="relative overflow-hidden rounded-[28px] border border-white/10 hover:border-[#FF4500]/50 shadow-[0_20px_50px_rgba(0,0,0,0.9)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_30px_rgba(255, 69, 0,0.22)] transition-all duration-500 group aspect-[3/4] flex flex-col justify-between p-6 cursor-pointer bg-[#0B0C0E]">
               {/* ── Large Background Image with Zoom ─────────────────── */}
               <div className="absolute inset-0 z-0">
                 <Image
@@ -132,14 +105,12 @@ export default function CategorySection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B0C0E] via-[#0B0C0E]/40 to-black/30" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent" />
                 
-                {/* Subtle Hover Red Flare */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#FF4500]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* ── Top Header Badge Pill ────────────────────────────── */}
               <div className="relative z-10 flex items-center justify-between">
-                <span className="glass-pill-red rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-wider text-[#FF4500] flex items-center gap-1.5 backdrop-blur-md">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#FF4500] animate-pulse" />
+                <span className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white flex items-center gap-1.5 backdrop-blur-md">
+                 
                   {cat.badge}
                 </span>
 

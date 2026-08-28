@@ -1,14 +1,31 @@
 ﻿"use client";
 
-import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  ArrowRight,
+  Menu,
+  Search,
+  ShoppingBag,
+  Sparkles,
+  UserRound,
+  X,
+} from "lucide-react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Search, Sparkles, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import Logo from "@/public/logo/ct-logo01.png";
-import { useSearch } from "@/lib/searchContext";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+import { useSearch } from "@/lib/searchContext";
 import { cn } from "@/lib/utils";
+import Logo from "@/public/logo/ct-logo01.png";
+
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Products", href: "/allproducts" },
+  { name: "Backpacks", href: "/backpacks" },
+  { name: "Latest Drops", href: "/latestproducts" },
+  { name: "Contact", href: "/contact" },
+];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,219 +33,317 @@ export function Navbar() {
   const pathname = usePathname();
   const { search, setSearch } = useSearch();
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Products", href: "/allproducts" },
-    { name: "Backpacks", href: "/backpacks" },
-    { name: "Latest Drops", href: "/latestproducts" },
-    { name: "Contact", href: "/contact" },
-  ];
-
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    const handleScroll = () => setScrolled(window.scrollY > 35);
     handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
+
+  const isActive = (href: string) =>
+    href === "/"
+      ? pathname === "/"
+      : pathname === href || pathname.startsWith(`${href}/`);
+
   return (
-    <div className="fixed inset-x-0 top-3 sm:top-5 z-50 flex justify-center px-3 sm:px-6 pointer-events-none">
+    <div className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 sm:px-5">
       <motion.header
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className={cn(
-          "pointer-events-auto relative w-full max-w-5xl transition-all duration-500 ease-out",
-          scrolled ? "max-w-4xl" : "max-w-5xl"
-        )}
+        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        className="pointer-events-auto relative w-full max-w-[1500px]"
       >
-        {/* Floating Glass Capsule Main Bar */}
+        {/* Main Navbar */}
         <div
-          className={cn(
-            "relative flex items-center justify-between rounded-full border transition-all duration-500 ease-out backdrop-blur-2xl",
-            scrolled
-              ? "h-14 sm:h-15 px-4 sm:px-5 bg-[#060608]/92 border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_20px_-5px_rgba(255, 69, 0,0.12)]"
-              : "h-16 sm:h-17 px-5 sm:px-6 bg-[#08080c]/80 border-white/[0.09] shadow-[0_15px_40px_rgba(0,0,0,0.75)]"
-          )}
+          className={cn("relative mx-auto h-[72px] overflow-hidden rounded-2xl border", "border-black/[0.08] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.08)]", "transition-all duration-300", scrolled && "rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.14)]",)}
         >
-          {/* Subtle Top Inner Edge Highlight */}
-          <div className="pointer-events-none absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          {/* Top Highlight */}
+          <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
 
-          {/* Left: Brand Logo */}
-          <Link href="/" className="group flex items-center gap-2 relative z-10 shrink-0">
-            <div className="relative overflow-hidden rounded-xl p-1 transition-transform duration-300 group-hover:scale-105">
-              <Image
-                src={Logo}
-                alt="Crossthenics Fitness"
-                width={130}
-                height={45}
-                loading="eager"
-                className={cn(
-                  "w-auto object-contain transition-all duration-300",
-                  scrolled ? "h-7 sm:h-8" : "h-8 sm:h-9"
-                )}
-                priority
-              />
-            </div>
-          </Link>
-
-          {/* Center: Desktop Navigation Links with Active Floating Pill & Glow Indicator */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={cn(
-                    "relative px-3.5 py-1.5 text-xs uppercase tracking-wider font-bold transition-all duration-200 rounded-full group",
-                    isActive
-                      ? "text-white"
-                      : "text-zinc-400 hover:text-white"
-                  )}
-                >
-                  {/* Active Animated Floating Capsule Indicator */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="navbar-active-capsule"
-                      className="absolute inset-0 rounded-full bg-[#FF4500]/18 border border-[#FF4500]/45 shadow-[0_0_18px_rgba(255, 69, 0,0.3)]"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-
-                  {/* Hover Subtle Underline / Dot Glow */}
-                  <span className="relative z-10 flex items-center gap-1.5">
-                    {link.name}
-                    {isActive && (
-                      <span className="h-1 w-1 rounded-full bg-[#FF4500] shadow-[0_0_6px_#FF4500]" />
-                    )}
-                  </span>
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Right: Search Pill & Action CTAs */}
-          <div className="hidden md:flex items-center gap-2.5">
-            {/* Search Pill */}
-            <div className="flex items-center rounded-full glass-light px-3 py-1.5 transition-all duration-300 focus-within:border-[#FF4500]/60 focus-within:bg-white/10 focus-within:ring-2 focus-within:ring-[#FF4500]/20">
-              <Search size={13} className="mr-1.5 text-zinc-400" />
-              <input
-                type="text"
-                placeholder="Search gear..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-24 xl:w-28 bg-transparent text-xs text-white placeholder:text-zinc-500 outline-none transition-all duration-300 focus:w-32 xl:focus:w-40"
-              />
-            </div>
-
-            {/* Login Link */}
+          <div className="flex h-full items-center gap-2 px-3 sm:px-5 lg:px-6 xl:px-8">
+            {/* Logo */}
             <Link
-              href="/auth/login"
-              className="btn-glass rounded-full px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-all hover:border-[#FF4500]/40"
+              href="/"
+              aria-label="Crossthenics Fitness"
+              className="group relative z-20 flex shrink-0 items-center"
             >
-              Log In
-            </Link>
-
-            {/* VIP / Contact CTA */}
-            <Link
-              href="/contact"
-              className="btn-electric-red flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider"
-            >
-              <Sparkles size={12} />
-              <span>Contact</span>
-            </Link>
-          </div>
-
-          {/* Mobile Menu Toggle Button */}
-          <div className="flex items-center gap-2 md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="rounded-full border border-white/10 bg-white/5 p-2 text-zinc-300 hover:text-white hover:bg-white/10 focus:outline-none transition-all"
-              aria-label="Toggle Navigation Menu"
-            >
-              {isOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Floating Glass Mobile Dropdown Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="mt-2.5 overflow-hidden rounded-3xl glass-dark p-5 shadow-[0_30px_70px_rgba(0,0,0,0.95)] md:hidden border border-white/[0.12]"
-            >
-              {/* Mobile Search */}
-              <div className="mb-4 flex items-center rounded-2xl glass-medium px-3.5 py-2.5">
-                <Search size={15} className="mr-2 text-zinc-400" />
-                <input
-                  type="text"
-                  placeholder="Search gear, belts, backpacks..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="w-full bg-transparent text-xs text-white placeholder:text-zinc-500 outline-none"
+              <motion.div
+                whileHover={{ scale: 1.04 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Image
+                  src={Logo}
+                  alt="Crossthenics Fitness"
+                  width={145}
+                  height={50}
+                  priority
+                  className="h-[31px] w-auto object-contain sm:h-[34px]"
                 />
-              </div>
+              </motion.div>
+            </Link>
 
-              {/* Mobile Navigation Links */}
-              <div className="flex flex-col gap-1">
+            {/* Desktop Navigation */}
+            <nav
+              aria-label="Main navigation"
+              className="hidden min-w-0 flex-1 items-center justify-center lg:flex"
+            >
+              <div className="flex min-w-0 max-w-full items-center rounded-full border border-black/[0.07] bg-black/[0.025] p-1">
                 {navLinks.map((link) => {
-                  const isActive = pathname === link.href;
+                  const active = isActive(link.href);
+
                   return (
                     <Link
-                      key={link.name}
+                      key={link.href}
                       href={link.href}
-                      onClick={() => setIsOpen(false)}
                       className={cn(
-                        "flex items-center justify-between rounded-xl px-4 py-3 text-xs font-bold uppercase tracking-wider transition-all",
-                        isActive
-                          ? "bg-[#FF4500]/18 border border-[#FF4500]/40 text-white shadow-[0_0_15px_rgba(255, 69, 0,0.18)]"
-                          : "text-zinc-400 hover:bg-white/5 hover:text-white"
+                        "relative whitespace-nowrap rounded-full px-2 py-2 text-[9px] font-bold uppercase tracking-[0.08em] transition-all duration-300",
+                        "xl:px-3 xl:text-[10px] 2xl:px-3.5 2xl:text-[10.5px]",
+                        active
+                          ? "text-black"
+                          : "text-black/60 hover:text-black",
                       )}
                     >
-                      <span>{link.name}</span>
-                      {isActive ? (
-                        <span className="h-2 w-2 rounded-full bg-[#FF4500] shadow-[0_0_8px_#FF4500]" />
-                      ) : (
-                        <ArrowRight size={13} className="text-zinc-600" />
+                      {active && (
+                        <motion.span
+                          layoutId="navbar-active"
+                          className="absolute inset-0 rounded-full border border-[#FF4500]/30 bg-[#FF4500]/10 shadow-[0_0_18px_rgba(255,69,0,0.10)]"
+                          transition={{
+                            type: "spring",
+                            stiffness: 420,
+                            damping: 32,
+                          }}
+                        />
                       )}
+
+                      <span className="relative z-10 flex items-center gap-1.5">
+                        {link.name}
+                      </span>
                     </Link>
                   );
                 })}
               </div>
+            </nav>
 
-              {/* Mobile Action Buttons */}
-              <div className="mt-4 grid grid-cols-2 gap-2.5 border-t border-white/10 pt-4">
-                <Link
-                  href="/auth/login"
-                  onClick={() => setIsOpen(false)}
-                  className="btn-glass flex items-center justify-center rounded-xl py-3 text-center text-xs font-bold uppercase tracking-wider"
-                >
-                  Log In
-                </Link>
-                <Link
-                  href="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className="btn-electric-red flex items-center justify-center gap-1.5 rounded-xl py-3 text-center text-xs font-bold uppercase tracking-wider"
-                >
-                  <Sparkles size={13} />
-                  <span>Contact</span>
-                </Link>
+            {/* Desktop Actions */}
+            <div className="relative z-20 hidden shrink-0 items-center gap-1 md:flex xl:gap-1.5 2xl:gap-2">
+              {/* Search */}
+              <div className="flex h-9 w-9 shrink-0 items-center overflow-hidden rounded-full border border-black/[0.10] bg-black/[0.025] transition-all duration-300 hover:border-black/20 xl:w-[135px] 2xl:w-[155px]">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center">
+                  <Search
+                    size={14}
+                    strokeWidth={1.8}
+                    className="text-black/60"
+                  />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search gear..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="hidden min-w-0 flex-1 bg-transparent pr-3 text-[10px] font-medium text-black outline-none placeholder:text-black/40 xl:block"
+                />
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+
+              {/* Account */}
+              <Link
+                href="/auth/login"
+                aria-label="Account"
+                className="group flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black/[0.10] bg-black/[0.025] text-black/70 transition-all duration-300 hover:border-black/20 hover:bg-black/[0.06] hover:text-black xl:h-10 xl:w-auto xl:px-3 2xl:px-3.5"
+              >
+                <UserRound
+                  size={14}
+                  strokeWidth={1.8}
+                  className="transition-transform duration-300 group-hover:scale-110"
+                />
+                <span className="ml-2 hidden text-[9px] font-bold uppercase tracking-[0.11em] xl:inline">
+                  Account
+                </span>
+              </Link>
+
+              {/* Cart */}
+              <Link
+                href="/cart"
+                aria-label="Shopping cart"
+                className="group relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black/[0.10] bg-black/[0.025] text-black/70 transition-all duration-300 hover:border-black/20 hover:bg-black/[0.06] hover:text-black xl:h-10 xl:w-10"
+              >
+                <ShoppingBag
+                  size={15}
+                  strokeWidth={1.8}
+                  className="transition-transform duration-300 group-hover:-translate-y-0.5"
+                />
+                <span className="absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-[#FF4500] shadow-[0_0_8px_rgba(255,69,0,0.8)]" />
+              </Link>
+
+              {/* Contact */}
+              <Link
+                href="/contact"
+                aria-label="Contact"
+                className="group flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#FF4500] font-black text-white shadow-[0_7px_22px_rgba(255,69,0,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#ff5518] hover:shadow-[0_12px_30px_rgba(255,69,0,0.32)] xl:h-10 xl:w-auto xl:gap-1.5 xl:px-3.5 2xl:px-4"
+              >
+                <span className="hidden text-[9px] uppercase tracking-[0.10em] xl:inline">
+                  Contact
+                </span>
+                <ArrowRight
+                  size={13}
+                  strokeWidth={2}
+                  className="hidden transition-transform duration-300 group-hover:translate-x-0.5 xl:inline"
+                />
+              </Link>
+            </div>
+
+            {/* Mobile Actions */}
+            <div className="relative z-20 ml-auto flex items-center gap-2 md:hidden">
+              <Link
+                href="/cart"
+                aria-label="Shopping cart"
+                className="relative flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black/[0.03] text-black/75 transition-all hover:bg-black/[0.07]"
+              >
+                <ShoppingBag size={16} strokeWidth={1.8} />
+                <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-[#FF4500]" />
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => setIsOpen((prev) => !prev)}
+                aria-label={isOpen ? "Close navigation" : "Open navigation"}
+                aria-expanded={isOpen}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black/[0.03] text-black transition-all duration-300 hover:bg-black/[0.07]"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {isOpen ? (
+                    <motion.span
+                      key="close"
+                      initial={{ opacity: 0, rotate: -90 }}
+                      animate={{ opacity: 1, rotate: 0 }}
+                      exit={{ opacity: 0, rotate: 90 }}
+                    >
+                      <X size={19} />
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="menu"
+                      initial={{ opacity: 0, rotate: 90 }}
+                      animate={{ opacity: 1, rotate: 0 }}
+                      exit={{ opacity: 0, rotate: -90 }}
+                    >
+                      <Menu size={19} />
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -12, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -12, scale: 0.98 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                className="mt-2 overflow-hidden rounded-2xl border border-black/[0.10] bg-white p-3 shadow-[0_25px_70px_rgba(0,0,0,0.15)] md:hidden"
+              >
+                {/* Mobile Search */}
+                <div className="mb-3 flex items-center rounded-2xl border border-black/[0.08] bg-black/[0.03] px-3">
+                  <Search
+                    size={15}
+                    strokeWidth={1.8}
+                    className="mr-2.5 shrink-0 text-black/50"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Search gear, backpacks..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="h-11 w-full min-w-0 bg-transparent text-xs font-medium text-black outline-none placeholder:text-black/40"
+                  />
+                </div>
+
+                {/* Mobile Links */}
+                <nav aria-label="Mobile navigation">
+                  <div className="space-y-1">
+                    {navLinks.map((link) => {
+                      const active = isActive(link.href);
+
+                      return (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={() => setIsOpen(false)}
+                          className={cn(
+                            "group flex items-center justify-between rounded-2xl border px-4 py-3.5 transition-all duration-300",
+                            active
+                              ? "border-[#FF4500]/30 bg-[#FF4500]/10"
+                              : "border-transparent hover:border-black/[0.06] hover:bg-black/[0.04]",
+                          )}
+                        >
+                          <div className="flex items-center gap-3">
+                            <span
+                              className={cn(
+                                "h-1.5 w-1.5 rounded-full",
+                                active
+                                  ? "bg-[#FF4500] shadow-[0_0_8px_#FF4500]"
+                                  : "bg-black/20",
+                              )}
+                            />
+                            <span
+                              className={cn(
+                                "text-xs font-bold uppercase tracking-[0.12em]",
+                                active
+                                  ? "text-black"
+                                  : "text-black/60 group-hover:text-black",
+                              )}
+                            >
+                              {link.name}
+                            </span>
+                          </div>
+                          <ArrowRight
+                            size={14}
+                            className={cn(
+                              "transition-all duration-300",
+                              active
+                                ? "text-[#FF4500]"
+                                : "text-black/25 group-hover:translate-x-1 group-hover:text-black/60",
+                            )}
+                          />
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </nav>
+
+                {/* Mobile Buttons */}
+                <div className="mt-3 grid grid-cols-2 gap-2 border-t border-black/[0.08] pt-3">
+                  <Link
+                    href="/auth/login"
+                    onClick={() => setIsOpen(false)}
+                    className="flex h-11 items-center justify-center gap-2 rounded-2xl border border-black/[0.10] bg-black/[0.03] text-[10px] font-bold uppercase tracking-[0.12em] text-black/70 transition-all hover:bg-black/[0.07] hover:text-black"
+                  >
+                    <UserRound size={14} />
+                    Account
+                  </Link>
+
+                  <Link
+                    href="/contact"
+                    onClick={() => setIsOpen(false)}
+                    className="flex h-11 items-center justify-center gap-2 rounded-2xl bg-[#FF4500] text-[10px] font-black uppercase tracking-[0.12em] text-white shadow-[0_8px_22px_rgba(255,69,0,0.20)] transition-all hover:bg-[#ff5518]"
+                  >
+                    Contact
+                  </Link>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </motion.header>
     </div>
   );

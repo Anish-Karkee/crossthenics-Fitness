@@ -1,71 +1,37 @@
 import React from "react";
-import { GlowOrb } from "@/components/ui/GlowOrb";
 
 /**
  * CinematicBackground
  *
- * A single fixed-positioned atmospheric layer rendered once at the AppShell
- * level. Sits behind all pages (z-0) with low opacity and ultra-smooth,
- * GPU-accelerated slow ambient movement.
+ * Fixed full-screen atmospheric layer rendered once at AppShell level.
+ * Replicates the Hero page's iconic black + red split design globally:
  *
- * Atmospheric Orbs:
- *  1. Hero crimson orb (large, breathing pulse animation)
- *  2. Mid-page orange orb (warm ember float animation)
- *  3. Upper-left soft white/silver glow (cool contrast drift)
- *  4. Deep lower red orb (slow atmospheric bleed)
- *  5. Central dark gradient blob (contrast depth)
- *  6. SVG film-grain noise filter (feTurbulence)
- *  7. Radial vignette ring (cinematic edge framing)
+ *  1. Deep black (#080808) base — from Hero's bg
+ *  2. Solid #FF4500 right panel (38% width, desktop only) — Hero's signature
+ *  3. Subtle gradient sheen over the red panel — Hero's polish layer
+ *  4. Fine 60px grid overlay — matches Hero's grid
+ *  5. Red ambient glow at the black/red seam — atmospheric depth
+ *  6. Bottom-left red bleed — keeps dark areas from feeling flat
+ *  7. SVG film-grain noise — cinematic texture
  */
 export default function CinematicBackground() {
   return (
-    <div
-      aria-hidden="true"
-      className="cinematic-bg"
-    >
-      {/* ── 1. Hero Red/Crimson Blurred Orb (Slow Breathing Pulse) ── */}
-      <GlowOrb
-        variant="crimson"
-        size="hero"
-        blur="2xl"
-        animation="pulse"
-        className="-top-28 left-1/2 -translate-x-1/2 opacity-90"
-      />
+    <div aria-hidden="true" className="cinematic-bg">
 
-      {/* ── 2. Mid-Page Orange / Amber Blurred Orb (Slow Floating Drift) ── */}
-      <GlowOrb
-        variant="orange"
-        size="xl"
-        blur="xl"
-        animation="float"
-        className="top-1/3 -right-24 opacity-80"
-      />
+      {/* ── 1. Solid Red Right Panel (hero signature, desktop only) ── */}
+      <div className="cinematic-red-panel" />
 
-      {/* ── 3. Upper-Left Soft White Atmospheric Glow (Subtle Drift) ── */}
-      <GlowOrb
-        variant="white"
-        size="lg"
-        blur="2xl"
-        animation="drift"
-        className="top-12 -left-16 opacity-50"
-      />
+      {/* ── 2. Subtle gradient sheen on the red panel ── */}
+      <div className="cinematic-red-panel-sheen" />
 
-      {/* ── 4. Lower Deep Red Atmospheric Orb (Subtle Pulse) ── */}
-      <GlowOrb
-        variant="red"
-        size="xl"
-        blur="2xl"
-        animation="pulse"
-        className="-bottom-20 -left-20 opacity-70"
-      />
+      {/* ── 3. Fine grid overlay — matches Hero's grid ── */}
+      <div className="cinematic-grid" />
 
-      {/* ── 5. Subtle Dark Gradient Blob (Depth Layer) ── */}
-      <GlowOrb
-        variant="dark"
-        size="2xl"
-        blur="lg"
-        className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-35"
-      />
+      {/* ── 4. Red ambient glow at the black/red seam ── */}
+      <div className="cinematic-seam-glow" />
+
+      {/* ── 5. Bottom-left atmospheric red bleed ── */}
+      <div className="cinematic-bottom-glow" />
 
       {/* ── 6. SVG Film Grain Texture ── */}
       <svg
@@ -84,11 +50,9 @@ export default function CinematicBackground() {
           <feColorMatrix type="saturate" values="0" />
           <feBlend in="SourceGraphic" mode="multiply" />
         </filter>
-        <rect width="100%" height="100%" filter="url(#cine-grain)" opacity="0.035" />
+        <rect width="100%" height="100%" filter="url(#cine-grain)" opacity="0.03" />
       </svg>
 
-      {/* ── 7. Radial Vignette Edge Mask ── */}
-      <div className="cinematic-vignette" />
     </div>
   );
 }

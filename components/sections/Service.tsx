@@ -43,8 +43,7 @@ export default function Service() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 rounded-full glass-pill-red px-4 py-1.5 mb-5"
           >
-            <Sparkles size={12} className="text-[#FF4500]" />
-            <span className="text-xs font-black uppercase tracking-widest text-[#FF4500]">
+            <span className="text-lg font-black uppercase tracking-widest text-[#ffffff]">
               Engineered Standards
             </span>
           </motion.div>
@@ -56,7 +55,7 @@ export default function Service() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tighter text-white leading-[0.95] mb-6"
           >
-            EVERYTHING YOU NEED TO <span className="text-electric-red">DOMINATE.</span>
+            <span className="text-electric-red">EVERYTHING </span>YOU NEED TO DOMINATE.
           </motion.h2>
 
           <motion.p

@@ -8,7 +8,6 @@ import {
   CreditCard,
   Truck,
   RotateCcw,
-  Sparkles,
   CheckCircle2,
   Quote,
 } from "lucide-react";
@@ -108,8 +107,7 @@ export default function TrustSection() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 rounded-full glass-pill-red px-4 py-1.5 mb-5"
           >
-            <Sparkles size={12} className="text-[#FF4500]" />
-            <span className="text-xs font-black uppercase tracking-widest text-[#FF4500]">
+            <span className="text-lg font-black uppercase tracking-widest text-[#ffffff]">
               Verified Proof
             </span>
           </motion.div>

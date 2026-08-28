@@ -152,8 +152,7 @@ export default function ProductShowcase() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 rounded-full glass-pill-red px-4 py-1.5 mb-5"
           >
-            <Sparkles size={12} className="text-[#FF4500]" />
-            <span className="text-xs font-black uppercase tracking-widest text-[#FF4500]">
+            <span className="text-lg font-black uppercase tracking-widest text-[#ffffff]">
               Flagship Collection
             </span>
           </motion.div>
@@ -165,7 +164,7 @@ export default function ProductShowcase() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tighter text-white leading-[0.95] mb-6"
           >
-            TRAIN WITH THE <span className="text-electric-red">BEST.</span>
+            <span className="text-electric-red">TRAIN</span> WITH THE BEST.
           </motion.h2>
 
           <motion.p
@@ -221,9 +220,6 @@ export default function ProductShowcase() {
                   whileHover={{ y: -6 }}
                   className="glass-card rounded-3xl p-5 flex flex-col justify-between group relative border border-white/10 hover:border-[#FF4500]/50 shadow-[0_20px_50px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_30px_rgba(255, 69, 0,0.18)] transition-all duration-500"
                 >
-                  {/* Top Inner Specular Line */}
-                  <div className="pointer-events-none absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-[#FF4500]/50 transition-colors duration-500" />
-
                   <div>
                     {/* ── IMAGE CONTAINER ───────────────────────────── */}
                     <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-black/90 border border-white/5 p-4 flex items-center justify-center">
@@ -240,9 +236,9 @@ export default function ProductShowcase() {
 
                       {/* Top Badges */}
                       <div className="absolute top-3 left-3 flex items-center gap-1.5 z-10">
-                        <span className="glass-pill-red rounded-md px-2.5 py-1 text-[9px] font-black uppercase tracking-widest text-[#FF4500]">
+                        
                           {product.badge}
-                        </span>
+                       
                       </div>
 
                       {/* Favorite Button */}
