@@ -7,6 +7,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-light: var(--surface-light);
+  --color-primary-red: var(--primary);
+  --color-accent-coral: var(--accent-coral);
+  --color-muted-text: var(--muted-foreground);
+  --color-white-glass: var(--white-glass);
+  --color-white-border: var(--white-border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
@@ -48,73 +55,59 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
+/* ─────────────────────────────────────────────────────
+   FITZONE-INSPIRED DESIGN TOKENS
+   Dark charcoal base · Vivid orange-red · High contrast
+   Reference: FitZone / Fitnexx fitness website aesthetic
+   ───────────────────────────────────────────────────── */
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+:root {
+  /* ── BACKGROUND & SURFACES ── */
+  --background: #111214;          /* Dark graphite — richer than pure black */
+  --surface: #191B1E;             /* Card/panel surface */
+  --surface-light: #222428;       /* Raised / active surface */
+
+  /* ── ACCENT / PRIMARY ── */
+  --primary: #FF4500;             /* Vivid orange-red — FitZone signature */
+  --primary-foreground: #FFFFFF;
+  --accent-coral: #FF6B35;        /* Warm coral highlight */
+
+  /* ── TEXT ── */
+  --foreground: #FFFFFF;
+  --muted-foreground: #9A9A9A;
+
+  /* ── GLASS TOKENS ── */
+  --white-glass: rgba(255, 255, 255, 0.05);
+  --white-border: rgba(255, 255, 255, 0.10);
+
+  /* ── SHADCN SYSTEM ALIGNMENT ── */
+  --card: #191B1E;
+  --card-foreground: #FFFFFF;
+  --popover: #191B1E;
+  --popover-foreground: #FFFFFF;
+  --secondary: rgba(255, 255, 255, 0.05);
+  --secondary-foreground: #FFFFFF;
+  --muted: #222428;
+  --accent: rgba(255, 69, 0, 0.15);
+  --accent-foreground: #FF6B35;
+  --destructive: #FF4500;
+  --border: rgba(255, 255, 255, 0.10);
+  --input: rgba(255, 255, 255, 0.05);
+  --ring: #FF4500;
+  --chart-1: #FF4500;
+  --chart-2: #FF6B35;
+  --chart-3: #FF8C5A;
+  --chart-4: #9A9A9A;
+  --chart-5: #222428;
+  --radius: 0.75rem;
+  --sidebar: #111214;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #FF4500;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: rgba(255, 69, 0, 0.12);
+  --sidebar-accent-foreground: #FF6B35;
+  --sidebar-border: rgba(255, 255, 255, 0.10);
+  --sidebar-ring: #FF4500;
 }
 
 @layer base {
@@ -122,9 +115,540 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    background-color: var(--background);
+    color: var(--foreground);
+    /* Subtle charcoal texture via SVG noise */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.028'/%3E%3C/svg%3E");
+    selection-background: rgba(255, 69, 0, 0.45);
+  }
+  ::selection {
+    background: rgba(255, 69, 0, 0.45);
+    color: #fff;
   }
   html {
     @apply font-sans;
+    color-scheme: dark;
   }
+}
+
+/* ─────────────────────────────────────────────
+   PREMIUM ATHLETIC GLASS — Design System v4
+   FitZone-inspired: Charcoal · Orange-Red · High Contrast
+   ───────────────────────────────────────────── */
+
+/*
+  TIER 1 — Glass Light
+  Badges, hover states, subtle overlays.
+*/
+.glass-light {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+/*
+  TIER 2 — Glass Medium
+  Default card surface, filter bars.
+*/
+.glass-medium {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.20),
+    0 8px 32px rgba(0, 0, 0, 0.55);
+}
+
+/*
+  TIER 3 — Glass Dark (SURFACE #191B1E)
+  Modals, feature panels, auth cards.
+*/
+.glass-dark {
+  background: rgba(25, 27, 30, 0.80);
+  backdrop-filter: blur(28px) saturate(170%);
+  -webkit-backdrop-filter: blur(28px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+    0 20px 60px rgba(0, 0, 0, 0.75);
+}
+
+/*
+  TIER 4 — Glass Strong (SURFACE LIGHT #222428)
+  Hero photo frames, showcase containers.
+*/
+.glass-strong {
+  background: rgba(34, 36, 40, 0.88);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+    0 12px 40px rgba(0, 0, 0, 0.60);
+}
+
+/* ─── COMPONENT-LEVEL GLASS TOKENS ─── */
+
+/*
+  Navbar — charcoal frosted capsule, FitZone style
+*/
+.glass-navbar {
+  background: rgba(17, 18, 20, 0.88);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 16px 48px rgba(0, 0, 0, 0.85);
+}
+
+/*
+  Interactive Card — dark surface, orange-red glow on hover
+*/
+.glass-card {
+  background: rgba(25, 27, 30, 0.75);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 8px 24px rgba(0, 0, 0, 0.55);
+  transition: all 0.30s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(34, 36, 40, 0.85);
+  border-color: rgba(255, 69, 0, 0.50);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 20px 50px rgba(0, 0, 0, 0.65),
+    0 0 35px -6px rgba(255, 69, 0, 0.35);
+  transform: translateY(-4px);
+}
+
+/*
+  Pill / Badge — compact glass chip
+*/
+.glass-pill {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: #FFFFFF;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+/*
+  Orange-Red pill variant — accent badge
+*/
+.glass-pill-red {
+  background: rgba(255, 69, 0, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 69, 0, 0.40);
+  color: #FF6B35;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 107, 53, 0.15),
+    0 0 14px rgba(255, 69, 0, 0.20);
+}
+
+/*
+  Input field — dark glass form element
+*/
+.glass-input {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: #FFFFFF;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 69, 0, 0.70);
+  box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.18);
+  outline: none;
+}
+
+/* ─── TYPOGRAPHY TOKENS ─── */
+
+.text-huge-white {
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* Primary accent — vivid orange-red with glow */
+.text-electric-red {
+  color: #FF4500;
+  text-shadow: 0 0 32px rgba(255, 69, 0, 0.42);
+}
+
+.text-coral {
+  color: #FF6B35;
+}
+
+.text-muted-custom {
+  color: #9A9A9A;
+}
+
+/* ─── GLOW UTILITIES ─── */
+
+.glow-red {
+  box-shadow: 0 0 30px -4px rgba(255, 69, 0, 0.55);
+}
+
+.glow-red-sm {
+  box-shadow: 0 0 14px rgba(255, 69, 0, 0.40);
+}
+
+/* ─── PRODUCT SPOTLIGHT ─── */
+.product-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 69, 0, 0.24) 0%,
+    rgba(255, 107, 53, 0.10) 35%,
+    transparent 65%
+  );
+  opacity: 0.85;
+  transition: opacity 0.5s ease, background 0.5s ease;
+}
+
+.group:hover .product-spotlight {
+  opacity: 1;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 69, 0, 0.38) 0%,
+    rgba(255, 107, 53, 0.16) 40%,
+    transparent 70%
+  );
+}
+
+/* ─── BUTTON TOKENS ─── */
+
+/* Primary — vivid orange-red with shine sweep */
+.btn-electric-red,
+.btn-primary-cta {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FF6B35 0%, #FF4500 50%, #D93A00 100%);
+  color: #FFFFFF;
+  font-weight: 800;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  box-shadow:
+    0 4px 20px rgba(255, 69, 0, 0.50),
+    0 0 18px rgba(255, 107, 53, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.28);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.btn-electric-red::after,
+.btn-primary-cta::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.42),
+    transparent
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: none;
+}
+
+.btn-electric-red:hover::after,
+.btn-primary-cta:hover::after {
+  left: 140%;
+  transition: left 0.70s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-electric-red:hover,
+.btn-primary-cta:hover {
+  background: linear-gradient(135deg, #FF7845 0%, #FF5515 50%, #E84000 100%);
+  box-shadow:
+    0 8px 32px rgba(255, 69, 0, 0.70),
+    0 0 32px rgba(255, 107, 53, 0.50),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px) scale(1.025);
+}
+
+.btn-electric-red:active,
+.btn-primary-cta:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow:
+    0 2px 10px rgba(255, 69, 0, 0.40),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* Secondary — transparent dark glass */
+.btn-glass,
+.btn-secondary-cta {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+    0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-glass::after,
+.btn-secondary-cta::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: none;
+}
+
+.btn-glass:hover::after,
+.btn-secondary-cta:hover::after {
+  left: 140%;
+  transition: left 0.70s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-glass:hover,
+.btn-secondary-cta:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.30);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 12px 32px rgba(0, 0, 0, 0.60),
+    0 0 22px rgba(255, 69, 0, 0.22);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-glass:active,
+.btn-secondary-cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Dark scrollbar — charcoal + orange thumb */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111214;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF4500;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   CINEMATIC GLOBAL BACKGROUND SYSTEM
+   FitZone-inspired: dark charcoal + vivid orange-red atmospheric glow
+   ───────────────────────────────────────────────────────────────────────── */
+
+.cinematic-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #111214;
+  pointer-events: none;
+}
+
+.cinematic-blob {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* BLOB 1 — Upper orange-red hero glow */
+.cinematic-blob-hero {
+  top: -25vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130vw;
+  height: 90vh;
+  background: radial-gradient(
+    ellipse at 50% 25%,
+    rgba(255, 69, 0, 0.22) 0%,
+    rgba(200, 50, 0, 0.10) 42%,
+    transparent 70%
+  );
+  filter: blur(90px);
+  mix-blend-mode: screen;
+}
+
+/* BLOB 2 — Mid-page warm ember glow */
+.cinematic-blob-ember {
+  top: 30vh;
+  right: -12vw;
+  width: 75vw;
+  height: 65vh;
+  background: radial-gradient(
+    ellipse at 70% 50%,
+    rgba(255, 107, 53, 0.14) 0%,
+    rgba(255, 69, 0, 0.06) 50%,
+    transparent 72%
+  );
+  filter: blur(110px);
+  mix-blend-mode: screen;
+}
+
+/* BLOB 3 — Bottom-left deep orange bleed */
+.cinematic-blob-bottom {
+  bottom: -12vh;
+  left: -10vw;
+  width: 65vw;
+  height: 60vh;
+  background: radial-gradient(
+    ellipse at 30% 70%,
+    rgba(180, 45, 0, 0.10) 0%,
+    rgba(100, 25, 0, 0.05) 55%,
+    transparent 75%
+  );
+  filter: blur(130px);
+  mix-blend-mode: screen;
+}
+
+/* BLOB 4 — Cool silver haze (color-temperature contrast) */
+.cinematic-blob-silver {
+  top: 8vh;
+  left: -6vw;
+  width: 55vw;
+  height: 55vh;
+  background: radial-gradient(
+    ellipse at 20% 20%,
+    rgba(220, 220, 240, 0.04) 0%,
+    rgba(180, 180, 200, 0.02) 50%,
+    transparent 72%
+  );
+  filter: blur(150px);
+  mix-blend-mode: screen;
+}
+
+/* SVG Film Grain Texture */
+.cinematic-grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* Vignette */
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    transparent 35%,
+    rgba(17, 18, 20, 0.20) 62%,
+    rgba(17, 18, 20, 0.50) 82%,
+    rgba(17, 18, 20, 0.80) 100%
+  );
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   ATMOSPHERIC GLOW ORBS & ANIMATIONS
+   ───────────────────────────────────────────────────────────────────────── */
+
+@keyframes orb-pulse {
+  0%   { transform: scale(1);    opacity: 0.80; }
+  50%  { transform: scale(1.09); opacity: 1;    }
+  100% { transform: scale(1);    opacity: 0.80; }
+}
+
+@keyframes orb-float {
+  0%   { transform: translate3d(0, 0, 0);         }
+  33%  { transform: translate3d(22px, -28px, 0);  }
+  66%  { transform: translate3d(-18px, 16px, 0);  }
+  100% { transform: translate3d(0, 0, 0);         }
+}
+
+@keyframes orb-drift {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg);    }
+  50%  { transform: translate3d(-30px, 24px, 0) rotate(3deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg);    }
+}
+
+.animate-orb-pulse { animation: orb-pulse 16s ease-in-out infinite; }
+.animate-orb-float { animation: orb-float 22s ease-in-out infinite; }
+.animate-orb-drift { animation: orb-drift 28s ease-in-out infinite; }
+
+/* Base Orb */
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Orb Variants — updated to orange-red palette */
+.orb-red {
+  background: radial-gradient(circle, rgba(255, 69, 0, 0.26) 0%, rgba(200, 45, 0, 0.10) 50%, transparent 72%);
+  mix-blend-mode: screen;
+}
+
+.orb-orange {
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.20) 0%, rgba(255, 69, 0, 0.08) 50%, transparent 72%);
+  mix-blend-mode: screen;
+}
+
+.orb-white {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.07) 0%, rgba(210, 210, 230, 0.03) 50%, transparent 70%);
+  mix-blend-mode: screen;
+}
+
+.orb-crimson {
+  background: radial-gradient(circle, rgba(220, 50, 0, 0.28) 0%, rgba(150, 30, 0, 0.10) 55%, transparent 75%);
+  mix-blend-mode: screen;
+}
+
+.orb-dark {
+  background: radial-gradient(circle, rgba(17, 18, 20, 0.90) 0%, rgba(25, 27, 30, 0.55) 60%, transparent 80%);
 }

@@ -1,13 +1,17 @@
-import Hero from "@/components/sections/Hero";
-import Services from "@/components/sections/Service";
+﻿import Hero from "@/components/sections/Hero";
+import CategorySection from "@/components/sections/CategorySection";
+import ProductShowcase from "@/components/sections/ProductShowcase";
+import Service from "@/components/sections/Service";
+import TrustSection from "@/components/sections/TrustSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,#111827_0%,#020617_45%,#020617_100%)] text-white">
-
+    <main className="min-h-screen bg-background text-foreground selection:bg-[#FF4500]/40 selection:text-[#F5F3EF]">
       <Hero />
-      <Services />
-
+      <CategorySection />
+      <ProductShowcase />
+      <Service />
+      <TrustSection />
     </main>
   );
 }
