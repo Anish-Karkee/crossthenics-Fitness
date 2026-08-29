@@ -492,9 +492,8 @@ export default function AdminProducts() {
                           type="number"
                           min="0"
                           placeholder="0"
-                          {...field}
-                          valueAsNumber={field.value}
-                          onChange={(e) => field.onChange(e.target.valueAsNumber || 0)}
+                          value={field.value ?? ""}
+                          onChange={(e) => field.onChange(e.target.valueAsNumber ?? 0)}
                         />
                       </FormControl>
                       <FormMessage />
