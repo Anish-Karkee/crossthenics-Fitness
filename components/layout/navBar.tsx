@@ -2,7 +2,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
+import { ArrowRight, Menu, Search, ShoppingBag, UserRound, X, LayoutDashboard } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useSearch } from "@/lib/searchContext";
 import { cn } from "@/lib/utils";
 import Logo from "@/public/logo/ct-logo01.png";
+import { useAuth } from "@/lib/auth/AuthContext";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -25,6 +26,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const { search, setSearch } = useSearch();
+  const { isAdmin } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +60,10 @@ export function Navbar() {
 
   // Close mobile menu when navigating
   useEffect(() => {
-    setIsOpen(false);
+    const timeoutId = setTimeout(() => {
+      setIsOpen(false);
+    }, 0);
+    return () => clearTimeout(timeoutId);
   }, [pathname]);
 
   const isActive = (href: string) =>
@@ -232,6 +237,25 @@ export function Navbar() {
                   className="hidden transition-transform duration-300 group-hover:translate-x-0.5 xl:inline"
                 />
               </Link>
+
+              {/* Admin Panel - Only for admins */}
+              {isAdmin && (
+                <Link
+                  href="/admin/dashboard"
+                  aria-label="Admin Panel"
+                  className="group flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black/[0.10] bg-black/[0.025] text-black/70 transition-all duration-300 hover:border-black/20 hover:bg-black/[0.06] hover:text-black xl:h-10 xl:w-auto xl:px-3 2xl:px-3.5"
+                >
+                  <LayoutDashboard
+                    size={14}
+                    strokeWidth={1.8}
+                    className="transition-transform duration-300 group-hover:scale-110"
+                  />
+
+                  <span className="ml-2 hidden text-[9px] font-bold uppercase tracking-[0.11em] xl:inline">
+                    Admin
+                  </span>
+                </Link>
+              )}
             </div>
 
             {/* ================================================== */}
@@ -434,6 +458,17 @@ export function Navbar() {
                   >
                     Contact
                   </Link>
+
+                  {isAdmin && (
+                    <Link
+                      href="/admin/dashboard"
+                      onClick={() => setIsOpen(false)}
+                      className="flex h-11 items-center justify-center gap-2 rounded-2xl border border-black/[0.10] bg-black/[0.03] text-[10px] font-bold uppercase tracking-[0.12em] text-black/70 transition-all hover:bg-black/[0.07] hover:text-black"
+                    >
+                      <LayoutDashboard size={14} />
+                      Admin
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             )}

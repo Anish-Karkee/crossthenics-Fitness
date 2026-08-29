@@ -1,10 +1,12 @@
 ﻿"use client";
 
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { Lock, Mail, ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/lib/auth/AuthContext";
 
 type LoginFormValues = {
   email: string;
@@ -12,22 +14,47 @@ type LoginFormValues = {
 };
 
 export default function LoginForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const { login, isAdmin } = useAuth();
+  
+  const redirectTo = searchParams.get("redirect") || "/";
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<LoginFormValues>({ mode: "onSubmit" });
 
-  const onSubmit = (data: LoginFormValues) => {
-    console.log("Login data:", data);
-    toast.success("Welcome back, Athlete!", {
-      description: "Signed into your Crossthenics account.",
-      style: {
-        background: "#0a0a0e",
-        border: "1px solid rgba(255, 69, 0, 0.5)",
-        color: "#ffffff",
-      },
-    });
+  const onSubmit = async (data: LoginFormValues) => {
+    try {
+      await login(data.email, data.password);
+      toast.success("Welcome back!", {
+        description: "Signed into your Crossthenics account.",
+        style: {
+          background: "#0a0a0e",
+          border: "1px solid rgba(255, 69, 0, 0.5)",
+          color: "#ffffff",
+        },
+      });
+      
+      if (isAdmin) {
+        router.push("/admin/dashboard");
+        router.refresh();
+      } else {
+        router.push(redirectTo);
+        router.refresh();
+      }
+    } catch (error) {
+      toast.error("Login failed", {
+        description: error instanceof Error ? error.message : "Invalid credentials",
+        style: {
+          background: "#0a0a0e",
+          border: "1px solid rgba(255, 69, 0, 0.5)",
+          color: "#ffffff",
+        },
+      });
+    }
   };
 
   return (
@@ -38,8 +65,7 @@ export default function LoginForm() {
       >
         {/* Header with HUGE WHITE TYPOGRAPHY */}
         <div className="mb-8 text-center">
-          <div className="inline-flex items-center gap-1.5 rounded-full glass-pill-red px-3.5 py-1 text-[11px] font-black uppercase tracking-widest text-[#FF4500] mb-3">
-            <Sparkles size={12} />
+          <div className="inline-flex items-center gap-1.5 rounded-full glass-pill-red px-3.5 py-1 text-[11px] font-black uppercase tracking-widest text-[#ffffff] mb-3">
             <span>Athlete Portal</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tighter text-white leading-none">
