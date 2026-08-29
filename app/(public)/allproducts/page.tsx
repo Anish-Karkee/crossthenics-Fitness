@@ -50,9 +50,8 @@ const AllProducts = () => {
         {/* Page Header with HUGE WHITE TYPOGRAPHY */}
         <div className="mb-12 text-left">
           <div className="inline-flex items-center gap-2 rounded-full glass-pill-red px-4 py-1.5 mb-4">
-            <Sparkles size={13} className="text-[#FF4500]" />
-            <span className="text-[11px] font-black uppercase tracking-widest text-[#FF4500]">
-              Heavy-Duty Catalog
+            <span className="text-[20px] font-black uppercase tracking-widest text-[#FF4500]">
+              All-In-One Catalog
             </span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
