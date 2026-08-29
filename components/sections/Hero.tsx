@@ -70,13 +70,13 @@ export default function Hero() {
             {/* Badge */}
 
             <motion.div {...fadeIn(0.05)} className="mb-6 flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#FF4500]/30 bg-[#FF4500]/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-[#FF4500]">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#FF4500]/30 bg-[#FF4500]/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-[#ffffff]">
                 Premium Fitness Equipment
               </span>
 
               <span
                 className="hidden items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-zinc-400 sm:inline-flex">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#FF4500]" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[#00ff22]" />
                 Made in Nepal
               </span>
             </motion.div>

@@ -42,13 +42,12 @@ const ContactPage = () => {
         {/* Page Header with HUGE WHITE TYPOGRAPHY */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 rounded-full glass-pill-red px-4 py-1.5 backdrop-blur-xl mb-4">
-            <Sparkles size={13} className="text-[#FF4500]" />
-            <span className="text-[11px] font-black uppercase tracking-widest text-[#FF4500]">
+            <span className="text-[20px] font-black uppercase tracking-widest text-[#ffffff]">
               Direct Transmission
             </span>
           </div>
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tighter text-[#F5F3EF] leading-none mb-5">
-            GET IN <span className="text-electric-red">TOUCH</span>
+            <span className="text-electric-red">GET</span> IN TOUCH
           </h1>
           <p className="text-sm sm:text-base text-[#A8A6A1] leading-relaxed font-normal max-w-xl mx-auto">
             Questions regarding sizing, bulk gym orders, or customized belts? Speak directly with our gear specialists in Pokhara.

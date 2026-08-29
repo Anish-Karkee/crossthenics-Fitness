@@ -50,7 +50,7 @@ const BackpacksPage = () => {
         {/* Page Header with HUGE WHITE TYPOGRAPHY */}
         <div className="mb-12 text-left">
           <div className="inline-flex items-center gap-2 rounded-full glass-pill-red px-4 py-1.5 mb-4">
-            <span className="text-[20px] font-black uppercase tracking-widest text-[#FF4500]">
+            <span className="text-[20px] font-black uppercase tracking-widest text-[#ffffff]">
               Tactical 45L Series
             </span>
           </div>
