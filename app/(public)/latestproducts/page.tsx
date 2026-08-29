@@ -177,8 +177,7 @@ const LatestProducts = () => {
                       className="relative z-[1] object-contain p-2 transition-transform duration-700 ease-out group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     />
-                    <div className="absolute top-2.5 left-2.5 z-10 flex items-center gap-1 rounded-md border border-[#FF4500]/40 bg-[#FF4500]/20 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-[#FF4500] backdrop-blur-md">
-                      <Sparkles size={9} />
+                    <div className="absolute top-2.5 left-2.5 z-10 flex items-center gap-1 rounded-md border border-[#FF4500]/40 bg-[#FF4500]/20 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-[#000000] backdrop-blur-md">
                       <span>New Drop</span>
                     </div>
                   </div>
